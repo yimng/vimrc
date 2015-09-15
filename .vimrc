@@ -51,6 +51,11 @@ set softtabstop=4       " number of spaces in tab when editing
 set ai                  " auto indent
 set si                  " smart indent
 set wrap                " wrap lines
+ " sets a mapping so that pressing F2 in normal mode will invert the 'paste' option
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>    " <F2> toggle the paste and nopaste mode
+set showmode            " enables displaying whether 'paste' is turned on in insert mode
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Support Chinese Character
