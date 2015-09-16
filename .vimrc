@@ -26,3 +26,6 @@ set encoding=utf-8
 set termencoding=gbk
 set gfn=Monaco:h10:cANSI
 set gfw=NSimsun:h12
+
+
+colorscheme desert
