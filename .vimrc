@@ -48,9 +48,9 @@ set smarttab            " be smart when use tabs
 set tabstop=4           " number of visual spaces per TAB
 set shiftwidth=4        " number of spaces to use for each step of (auto)indent
 set softtabstop=4       " number of spaces in tab when editing
-set ai                  "Auto indent
-set si                  "Smart indent
-set wrap                "Wrap lines
+set ai                  " auto indent
+set si                  " smart indent
+set wrap                " wrap lines
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Support Chinese Character
@@ -61,7 +61,4 @@ set encoding=utf-8
 set termencoding=gbk
 "set gfn=Monaco:h10:cANSI
 "set gfw=NSimsun:h12
-
-
-
 
