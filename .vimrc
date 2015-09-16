@@ -18,6 +18,9 @@ nnoremap <leader><space> :nohlsearch<CR>
 set ignorecase          " ignore case in search patterns
 set smartcase           " Override the 'ignorecase' option if the search pattern contians upper case charactors
 set nocompatible        " close the compatable
+set nowrap              " no auto line wrap
+" allow backspace key
+set backspace=indent,eol,start whichwrap+=<,>,[,]
 
 " support Chinese Charactor
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
@@ -27,5 +30,4 @@ set termencoding=gbk
 set gfn=Monaco:h10:cANSI
 set gfw=NSimsun:h12
 
-
-colorscheme desert
+colorscheme desert      "
