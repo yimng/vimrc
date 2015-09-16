@@ -1,4 +1,5 @@
 syntax enable           " enable syntax processing
+syntax on               "
 set tabstop=4           " number of visual spaces per TAB
 set shiftwidth=4        " number of spaces to use for each step of (auto)indent
 set softtabstop=4       " number of spaces in tab when editing
@@ -16,6 +17,7 @@ set hlsearch            " highlight matches
 nnoremap <leader><space> :nohlsearch<CR>
 set ignorecase          " ignore case in search patterns
 set smartcase           " Override the 'ignorecase' option if the search pattern contians upper case charactors
+set nocompatible        " close the compatable
 
 " support Chinese Charactor
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
