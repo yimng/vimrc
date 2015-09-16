@@ -16,3 +16,11 @@ set hlsearch            " highlight matches
 nnoremap <leader><space> :nohlsearch<CR>
 set ignorecase          " ignore case in search patterns
 set smartcase           " Override the 'ignorecase' option if the search pattern contians upper case charactors
+
+" support Chinese Charactor
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+set fileencoding=utf-8
+set encoding=utf-8
+set termencoding=gbk
+set gfn=Monaco:h10:cANSI
+set gfw=NSimsun:h12
