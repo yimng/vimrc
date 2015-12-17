@@ -39,6 +39,10 @@ set background=dark
 set nobackup
 set nowb
 set noswapfile
+"When set autowrite, vi will automatically write out
+"the contents of a changed buffer when you issue the :n (next) command to move to the
+"next file to be edited, and before running a shell command with :!.
+set autowrite
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text, tab and indent related
