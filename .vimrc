@@ -67,3 +67,10 @@ set termencoding=gbk
 "set gfn=Monaco:h10:cANSI
 "set gfw=NSimsun:h12
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Support OCaml with merlin
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+execute "set rtp+=" . g:opamshare . "/merlin/vim"
+let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+execute "set rtp+=" . g:opamshare . "/merlin/vim"
