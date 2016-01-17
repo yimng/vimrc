@@ -37,8 +37,8 @@ set background=dark
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
 set nobackup
-set nowb
-set noswapfile
+set nowb                " turn off writebackup
+set noswapfile          " turn off swapfile
 "When set autowrite, vi will automatically write out
 "the contents of a changed buffer when you issue the :n (next) command to move to the
 "next file to be edited, and before running a shell command with :!.
@@ -55,6 +55,7 @@ set softtabstop=4       " number of spaces in tab when editing
 set ai                  " auto indent
 set si                  " smart indent
 set wrap                " wrap lines
+set textwidth=0         " set textwidth length
  " sets a mapping so that pressing F2 in normal mode will invert the 'paste' option
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>    " <F2> toggle the paste and nopaste mode
