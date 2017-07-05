@@ -12,6 +12,9 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'pangloss/vim-javascript'
+
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -132,3 +135,6 @@ let g:ctrlp_follow_symlinks=1
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 let NERDTreeHighlightCursorline=1
 map <F3> :NERDTreeToggle<CR>
+
+" =====================================vim-javascript
+let g:javascript_plugin_jsdoc = 1
