@@ -75,7 +75,7 @@ set noswapfile          " turn off swapfile
 "When set autowrite, vi will automatically write out
 "the contents of a changed buffer when you issue the :n (next) command to move to the
 "next file to be edited, and before running a shell command with :!.
-set autowrite
+"set autowrite
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text, tab and indent related
@@ -93,7 +93,8 @@ set textwidth=0         " set textwidth length
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>    " <F2> toggle the paste and nopaste mode
 set showmode            " enables displaying whether 'paste' is turned on in insert mode
-
+set showcmd
+set ruler
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Support Chinese Character
