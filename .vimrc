@@ -82,9 +82,9 @@ set noswapfile          " turn off swapfile
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set expandtab           " tabs are spaces
 set smarttab            " be smart when use tabs
-set tabstop=4           " number of visual spaces per TAB
-set shiftwidth=4        " number of spaces to use for each step of (auto)indent
-set softtabstop=4       " number of spaces in tab when editing
+set tabstop=2           " number of visual spaces per TAB
+set shiftwidth=2        " number of spaces to use for each step of (auto)indent
+set softtabstop=2       " number of spaces in tab when editing
 set ai                  " auto indent
 set si                  " smart indent
 set wrap                " wrap lines
@@ -95,6 +95,24 @@ set pastetoggle=<F2>    " <F2> toggle the paste and nopaste mode
 set showmode            " enables displaying whether 'paste' is turned on in insert mode
 set showcmd
 set ruler
+autocmd FileType c          setlocal sw=4 sts=4 ts=4 et
+autocmd FileType cpp        setlocal sw=4 sts=4 ts=4 et
+autocmd FileType cs         setlocal sw=4 sts=4 ts=4 et
+autocmd FileType ocaml      setlocal sw=2 sts=2 ts=2 et
+autocmd FileType css        setlocal sw=2 sts=2 ts=2 et
+autocmd FileType diff       setlocal sw=4 sts=4 ts=4 et
+autocmd FileType html       setlocal sw=2 sts=2 ts=2 et
+autocmd FileType java       setlocal sw=4 sts=4 ts=4 et
+autocmd FileType javascript setlocal sw=2 sts=2 ts=2 et
+autocmd FileType perl       setlocal sw=4 sts=4 ts=4 et
+autocmd FileType php        setlocal sw=4 sts=4 ts=4 et
+autocmd FileType python     setlocal sw=4 sts=4 ts=4 et
+autocmd FileType sh         setlocal sw=4 sts=4 ts=4 et
+autocmd FileType sql        setlocal sw=4 sts=4 ts=4 et
+autocmd FileType vim        setlocal sw=2 sts=2 ts=2 et
+autocmd FileType xml        setlocal sw=4 sts=4 ts=4 et
+autocmd FileType yaml       setlocal sw=2 sts=2 ts=2 et
+autocmd FileType zsh        setlocal sw=4 sts=4 ts=4 et
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Support Chinese Character
