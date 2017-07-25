@@ -38,6 +38,7 @@ filetype plugin indent on    " required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible        " close the compatable
 filetype indent on      " load filetype-specific indent file
+filetype on
 set autoread            " Set to auto read when a file is changed from the outside
 set number              " show line numbers
 
@@ -61,17 +62,12 @@ nnoremap <leader><space> :nohlsearch<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable           " enable syntax processing
 syntax on               " enable syntax highlight
-try
-    colorscheme desert
-catch
-endtry
 set background=dark
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Files and backups
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Turn backup off, since most stuff is in SVN, git et.c anyway...
-set nobackup
+set nobackup            " turn off backup file
 set nowb                " turn off writebackup
 set noswapfile          " turn off swapfile
 "When set autowrite, vi will automatically write out
@@ -82,21 +78,22 @@ set noswapfile          " turn off swapfile
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set expandtab           " tabs are spaces
+set expandtab           " tabs are changed to spaces auto
 set smarttab            " be smart when use tabs
 set tabstop=2           " number of visual spaces per TAB
 set shiftwidth=2        " number of spaces to use for each step of (auto)indent
 set softtabstop=2       " number of spaces in tab when editing
-set ai                  " auto indent
-set si                  " smart indent
+set autoindent          " auto indent
+set smartindent         " smart indent
 set wrap                " wrap lines
 set textwidth=0         " set textwidth length
  " sets a mapping so that pressing F2 in normal mode will invert the 'paste' option
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>    " <F2> toggle the paste and nopaste mode
-set showmode            " enables displaying whether 'paste' is turned on in insert mode
+set showmode            " show the vim mode 
 set showcmd
-set ruler
+set ruler               " Show the line and column number of the cursor position
+set scrolloff=7         " the line before or after cursor when scroll
 autocmd FileType c          setlocal sw=4 sts=4 ts=4 et
 autocmd FileType cpp        setlocal sw=4 sts=4 ts=4 et
 autocmd FileType cs         setlocal sw=4 sts=4 ts=4 et
