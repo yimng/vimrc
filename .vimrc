@@ -12,7 +12,9 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'pangloss/vim-javascript'
+"Plugin 'pangloss/vim-javascript'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'moll/vim-node'
 
 
 
@@ -156,4 +158,4 @@ let NERDTreeHighlightCursorline=1
 map <F3> :NERDTreeToggle<CR>
 
 " =====================================vim-javascript
-let g:javascript_plugin_jsdoc = 1
+"let g:javascript_plugin_jsdoc = 1
