@@ -16,8 +16,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'moll/vim-node'
 
-
-
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -36,24 +34,39 @@ filetype plugin indent on    " required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible        " close the compatable
-filetype indent on      " load filetype-specific indent file
+set nocompatible        " close the compatable (default nocompatible)
 filetype on
-set autoread            " Set to auto read when a file is changed from the outside
-set number              " show line numbers
+filetype indent on      " load filetype-specific indent file
+filetype plugin on
+set autoread            " Set to auto read when a file is changed from the outside (default noautoread)
+set number              " show line numbers (default nonumber)
+set hidden              " Hide buffers when they are abandoned (default nohidden)
+set nostartofline
+set laststatus=2        " Always display the status line, even if only one window is displayed (default value 1)
+set confirm             " instead of failing a command because of unsaved changes, instead raise a
+                        " dialogue asking if you wish to save changed files.
+set visualbell          " Use visual bell instead of beeping when doing something wrong
+set t_vb=               " And reset the terminal code for the visual bell. If visualbell is set, and
+                        " this line is also included, vim will neither flash nor beep. If visualbell
+                        " is unset, this does nothing.
+set mouse=a             " Enable use of the mouse for all modes
+set cmdheight=2         " Set the command window height to 2 lines, to avoid many cases of having to
+                        " "press <Enter> to continue"
+set notimeout ttimeout ttimeoutlen=200
+                        " Quickly time out on keycodes, but never time out on mappings
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set wildmenu            " visual autocomplete for command menu
+set wildmenu            " visual autocomplete for command menu (default nowildmenu)
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
-set ignorecase          " ignore case in search patterns
-set smartcase           " Override the 'ignorecase' option if the search pattern contians upper case charactors
-set hlsearch            " highlight matches
-set incsearch           " search as characters are enntered
-set lazyredraw          " redraw only when we need
-set showmatch           " hightlight matching [{()}]
+set ignorecase          " ignore case in search patterns (default noignorecase)
+set smartcase           " Override the 'ignorecase' option if the search pattern contians upper case charactors (default smartcase)
+set hlsearch            " highlight matches (default hlsearch)
+set incsearch           " search as characters are enntered (default noincsearh)
+set lazyredraw          " redraw only when we need (default nolazyredraw)
+set showmatch           " hightlight matching [{()}] (default noshowmatch)
 " turn off search highlight by click <space>
 nnoremap <leader><space> :nohlsearch<CR>
 
@@ -87,12 +100,10 @@ set autoindent          " auto indent
 set smartindent         " smart indent
 set wrap                " wrap lines
 set textwidth=0         " set textwidth length
- " sets a mapping so that pressing F2 in normal mode will invert the 'paste' option
-nnoremap <F2> :set invpaste paste?<CR>
-set pastetoggle=<F2>    " <F2> toggle the paste and nopaste mode
+set pastetoggle=<F11>   " <F11> toggle the paste and nopaste mode
 set showmode            " show the vim mode 
-set showcmd
-set ruler               " Show the line and column number of the cursor position
+set showcmd             " Show partial commands in the last line of the screen (default noshowcmd)
+set ruler               " Show the line and column number of the cursor position (default ruler)
 set scrolloff=7         " the line before or after cursor when scroll
 autocmd FileType c          setlocal sw=4 sts=4 ts=4 et
 autocmd FileType cpp        setlocal sw=4 sts=4 ts=4 et
@@ -116,10 +127,10 @@ autocmd FileType zsh        setlocal sw=4 sts=4 ts=4 et
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Support Chinese Character
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
-set fileencoding=utf-8
-set encoding=utf-8
-set termencoding=gbk
+set fileencodings+=cp936,gb18030,big5
+"set fileencoding=utf-8
+"set encoding=utf-8
+"set termencoding=gbk
 "set gfn=Monaco:h10:cANSI
 "set gfw=NSimsun:h12
 
