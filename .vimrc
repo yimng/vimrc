@@ -31,6 +31,9 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -142,10 +145,14 @@ execute "set rtp+=" . g:opamshare . "/merlin/vim"
 
 
 
-" =====================================tagbar
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" tagbar
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <F8> :TagbarToggle<CR>
 
-" =====================================ctrlp
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ctlp 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ctrlp_map = '<c-p>' 
 let g:ctrlp_cmd = 'CtrlP'
 map <leader>f :CtrlPMRU<CR>
@@ -160,10 +167,14 @@ let g:ctrlp_match_window_reversed=0
 let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
 
-" =====================================nerdtree
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" nerdtree 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 let NERDTreeHighlightCursorline=1
 map <F3> :NERDTreeToggle<CR>
 
-" =====================================vim-javascript
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-javascript
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "let g:javascript_plugin_jsdoc = 1
