@@ -71,7 +71,7 @@ set hlsearch            " highlight matches (default hlsearch)
 set incsearch           " search as characters are enntered (default noincsearh)
 set lazyredraw          " redraw only when we need (default nolazyredraw)
 set showmatch           " hightlight matching [{()}] (default noshowmatch)
-nnoremap <leader><space> :nohlsearch<CR>
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
                         " turn off search highlight by click <space>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -101,7 +101,7 @@ set autoindent          " auto indent
 set smartindent         " smart indent
 set wrap                " wrap lines
 set textwidth=0         " set textwidth length
-set pastetoggle=<F2>   " <F2> toggle the paste and nopaste mode
+set pastetoggle=<F2>    " <F2> toggle the paste and nopaste mode
 set showmode            " show the vim mode 
 set showcmd             " Show partial commands in the last line of the screen (default noshowcmd)
 set ruler               " Show the line and column number of the cursor position (default ruler)
