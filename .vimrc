@@ -33,11 +33,12 @@ filetype plugin indent on    " required
 
 
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible        " close the compatable (default nocompatible)
+syntax enable           " enable syntax processing
+"syntax on               " enable syntax highlight
 filetype on
 filetype indent on      " load filetype-specific indent file
 filetype plugin on
@@ -48,12 +49,12 @@ set nostartofline
 set laststatus=2        " Always display the status line, even if only one window is displayed (default value 1)
 set confirm             " instead of failing a command because of unsaved changes, instead raise a
                         " dialogue asking if you wish to save changed files.
-set visualbell          " Use visual bell instead of beeping when doing something wrong
-set t_vb=               " And reset the terminal code for the visual bell. If visualbell is set, and
+"set visualbell          " Use visual bell instead of beeping when doing something wrong
+"set t_vb=               " And reset the terminal code for the visual bell. If visualbell is set, and
                         " this line is also included, vim will neither flash nor beep. If visualbell
                         " is unset, this does nothing.
 set mouse=a             " Enable use of the mouse for all modes
-set cmdheight=2         " Set the command window height to 2 lines, to avoid many cases of having to
+"set cmdheight=2         " Set the command window height to 2 lines, to avoid many cases of having to
                         " "press <Enter> to continue"
 set notimeout ttimeout ttimeoutlen=200
                         " Quickly time out on keycodes, but never time out on mappings
@@ -63,21 +64,19 @@ set notimeout ttimeout ttimeoutlen=200
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set wildmenu            " visual autocomplete for command menu (default nowildmenu)
 set backspace=eol,start,indent
-set whichwrap+=<,>,h,l
+set whichwrap+=<,>      " Add left and right key to wrap the line when move cursor
 set ignorecase          " ignore case in search patterns (default noignorecase)
 set smartcase           " Override the 'ignorecase' option if the search pattern contians upper case charactors (default smartcase)
 set hlsearch            " highlight matches (default hlsearch)
 set incsearch           " search as characters are enntered (default noincsearh)
 set lazyredraw          " redraw only when we need (default nolazyredraw)
 set showmatch           " hightlight matching [{()}] (default noshowmatch)
-" turn off search highlight by click <space>
 nnoremap <leader><space> :nohlsearch<CR>
+                        " turn off search highlight by click <space>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-syntax enable           " enable syntax processing
-syntax on               " enable syntax highlight
 set background=dark
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -86,10 +85,9 @@ set background=dark
 set nobackup            " turn off backup file
 set nowb                " turn off writebackup
 set noswapfile          " turn off swapfile
-"When set autowrite, vi will automatically write out
-"the contents of a changed buffer when you issue the :n (next) command to move to the
-"next file to be edited, and before running a shell command with :!.
-"set autowrite
+"set autowrite          " When set autowrite, vi will automatically write out
+                        " the contents of a changed buffer when you issue the :n (next) command to move to the
+                        " next file to be edited, and before running a shell command with :!.
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text, tab and indent related
@@ -103,7 +101,7 @@ set autoindent          " auto indent
 set smartindent         " smart indent
 set wrap                " wrap lines
 set textwidth=0         " set textwidth length
-set pastetoggle=<F11>   " <F11> toggle the paste and nopaste mode
+set pastetoggle=<F2>   " <F2> toggle the paste and nopaste mode
 set showmode            " show the vim mode 
 set showcmd             " Show partial commands in the last line of the screen (default noshowcmd)
 set ruler               " Show the line and column number of the cursor position (default ruler)
