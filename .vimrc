@@ -53,7 +53,7 @@ set confirm             " instead of failing a command because of unsaved change
 "set t_vb=               " And reset the terminal code for the visual bell. If visualbell is set, and
                         " this line is also included, vim will neither flash nor beep. If visualbell
                         " is unset, this does nothing.
-set mouse=a             " Enable use of the mouse for all modes
+"set mouse=a             " Enable use of the mouse for all modes
 "set cmdheight=2         " Set the command window height to 2 lines, to avoid many cases of having to
                         " "press <Enter> to continue"
 set notimeout ttimeout ttimeoutlen=200
