@@ -11,10 +11,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
-"Plugin 'pangloss/vim-javascript'
+Plugin 'pangloss/vim-javascript'
 Plugin 'jelera/vim-javascript-syntax'
-Plugin 'moll/vim-node'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -31,17 +29,10 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible        " close the compatable (default nocompatible)
 syntax enable           " enable syntax processing
-"syntax on               " enable syntax highlight
-filetype on
-filetype indent on      " load filetype-specific indent file
-filetype plugin on
 set autoread            " Set to auto read when a file is changed from the outside (default noautoread)
 set number              " show line numbers (default nonumber)
 set hidden              " Hide buffers when they are abandoned (default nohidden)
@@ -77,7 +68,7 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set background=dark
+"set background=dark
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Files and backups
@@ -166,13 +157,7 @@ let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" nerdtree 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
-let NERDTreeHighlightCursorline=1
-map <F3> :NERDTreeToggle<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-javascript
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_jsdoc = 1
+
