@@ -13,6 +13,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'jelera/vim-javascript-syntax'
+Plugin 'vim-syntastic/syntastic'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -161,3 +162,24 @@ let g:ctrlp_follow_symlinks=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:javascript_plugin_jsdoc = 1
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-syntastic/syntastic
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" For synctastic
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_w = 0
+let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_python_pylint_args='--disable=C0111,R0903,C0301'
+" let g:syntastic_go_checkers = ['golint', 'govet']
+let g:syntastic_mode_map = {
+    \ 'mode': 'passive', 
+    \ 'active_filetypes': [], 
+    \ 'passive_filetypes': ['go']
+\ }
+map <F4> :SyntasticCheck<CR>
