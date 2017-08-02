@@ -42,18 +42,22 @@ set hidden              " Hide buffers when they are abandoned (default nohidden
 set nostartofline
 set laststatus=2        " Always display the status line, even if only one window is displayed (default value 1)
 set confirm             " instead of failing a command because of unsaved changes, instead raise a
+set history=50
                         " dialogue asking if you wish to save changed files.
 if !has('nvim') && &ttimeoutlen == -1
   set ttimeout
-  set ttimeoutlen=100
+  set ttimeoutlen=200
 endif
+set pastetoggle=<F2>    " <F2> toggle the paste and nopaste mode
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set wildmenu            " visual autocomplete for command menu (default nowildmenu)
+set wildignore=*.o,*.obj,*.bak,*.exe,*.py[co],*.swp,*~,*.pyc,.svn,.git
 set backspace=eol,start,indent
 set whichwrap+=<,>      " Add left and right key to wrap the line when move cursor
+set matchpairs+=<:>     " specially for html
 set ignorecase          " ignore case in search patterns (default noignorecase)
 set smartcase           " Override the 'ignorecase' option if the search pattern contians upper case charactors (default smartcase)
 set hlsearch            " highlight matches (default hlsearch)
@@ -63,11 +67,16 @@ set showmatch           " hightlight matching [{()}] (default noshowmatch)
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
                         " turn off search highlight by click <space>
 set display+=lastline
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Colors and Fonts
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"set background=dark
+set showmode            " show the vim mode 
+set showcmd             " Show partial commands in the last line of the screen (default noshowcmd)
+set ruler               " Show the line and column number of the cursor position (default ruler)
+set title               " show file in titlebar
+if !&scrolloff
+  set scrolloff=7       " the line before or after cursor when scroll
+endif
+if !&sidescrolloff
+  set sidescrolloff=5   "
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Files and backups
@@ -90,34 +99,11 @@ set autoindent          " auto indent
 set smartindent         " smart indent
 set wrap                " wrap lines
 set textwidth=0         " set textwidth length
-set pastetoggle=<F2>    " <F2> toggle the paste and nopaste mode
-set showmode            " show the vim mode 
-set showcmd             " Show partial commands in the last line of the screen (default noshowcmd)
-set ruler               " Show the line and column number of the cursor position (default ruler)
-if !&scrolloff
-  set scrolloff=7       " the line before or after cursor when scroll
+
+if has("autocmd")
+  autocmd FileType c,cpp,cs,diff,java,perl,php,python,sh,sql,xml,zsh          setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType ocaml,css,html,javascript,vim,yaml                         setlocal sw=2 sts=2 ts=2 et
 endif
-if !&sidescrolloff
-  set sidescrolloff=5   "
-endif
-autocmd FileType c          setlocal sw=4 sts=4 ts=4 et
-autocmd FileType cpp        setlocal sw=4 sts=4 ts=4 et
-autocmd FileType cs         setlocal sw=4 sts=4 ts=4 et
-autocmd FileType ocaml      setlocal sw=2 sts=2 ts=2 et
-autocmd FileType css        setlocal sw=2 sts=2 ts=2 et
-autocmd FileType diff       setlocal sw=4 sts=4 ts=4 et
-autocmd FileType html       setlocal sw=2 sts=2 ts=2 et
-autocmd FileType java       setlocal sw=4 sts=4 ts=4 et
-autocmd FileType javascript setlocal sw=2 sts=2 ts=2 et
-autocmd FileType perl       setlocal sw=4 sts=4 ts=4 et
-autocmd FileType php        setlocal sw=4 sts=4 ts=4 et
-autocmd FileType python     setlocal sw=4 sts=4 ts=4 et
-autocmd FileType sh         setlocal sw=4 sts=4 ts=4 et
-autocmd FileType sql        setlocal sw=4 sts=4 ts=4 et
-autocmd FileType vim        setlocal sw=2 sts=2 ts=2 et
-autocmd FileType xml        setlocal sw=4 sts=4 ts=4 et
-autocmd FileType yaml       setlocal sw=2 sts=2 ts=2 et
-autocmd FileType zsh        setlocal sw=4 sts=4 ts=4 et
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Support Chinese Character
@@ -173,6 +159,7 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_check_on_w = 0
 let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_ocaml_checkers = ['merlin']
 let g:syntastic_python_pylint_args='--disable=C0111,R0903,C0301'
 let g:syntastic_mode_map = {
     \ 'mode': 'passive', 
