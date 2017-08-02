@@ -33,7 +33,9 @@ filetype plugin indent on    " required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-syntax enable           " enable syntax processing
+if has('syntax') && !exists('g:syntax_on')
+  syntax enable         " enable syntax processing
+endif
 set autoread            " Set to auto read when a file is changed from the outside (default noautoread)
 set number              " show line numbers (default nonumber)
 set hidden              " Hide buffers when they are abandoned (default nohidden)
@@ -41,15 +43,10 @@ set nostartofline
 set laststatus=2        " Always display the status line, even if only one window is displayed (default value 1)
 set confirm             " instead of failing a command because of unsaved changes, instead raise a
                         " dialogue asking if you wish to save changed files.
-"set visualbell          " Use visual bell instead of beeping when doing something wrong
-"set t_vb=               " And reset the terminal code for the visual bell. If visualbell is set, and
-                        " this line is also included, vim will neither flash nor beep. If visualbell
-                        " is unset, this does nothing.
-"set mouse=a             " Enable use of the mouse for all modes
-"set cmdheight=2         " Set the command window height to 2 lines, to avoid many cases of having to
-                        " "press <Enter> to continue"
-set notimeout ttimeout ttimeoutlen=200
-                        " Quickly time out on keycodes, but never time out on mappings
+if !has('nvim') && &ttimeoutlen == -1
+  set ttimeout
+  set ttimeoutlen=100
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM user interface
@@ -65,6 +62,7 @@ set lazyredraw          " redraw only when we need (default nolazyredraw)
 set showmatch           " hightlight matching [{()}] (default noshowmatch)
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
                         " turn off search highlight by click <space>
+set display+=lastline
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colors and Fonts
@@ -84,7 +82,6 @@ set noswapfile          " turn off swapfile
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"set expandtab           " tabs are changed to spaces auto
 set smarttab            " be smart when use tabs
 set tabstop=2           " number of visual spaces per TAB
 set shiftwidth=2        " number of spaces to use for each step of (auto)indent
@@ -97,7 +94,12 @@ set pastetoggle=<F2>    " <F2> toggle the paste and nopaste mode
 set showmode            " show the vim mode 
 set showcmd             " Show partial commands in the last line of the screen (default noshowcmd)
 set ruler               " Show the line and column number of the cursor position (default ruler)
-set scrolloff=7         " the line before or after cursor when scroll
+if !&scrolloff
+  set scrolloff=7       " the line before or after cursor when scroll
+endif
+if !&sidescrolloff
+  set sidescrolloff=5   "
+endif
 autocmd FileType c          setlocal sw=4 sts=4 ts=4 et
 autocmd FileType cpp        setlocal sw=4 sts=4 ts=4 et
 autocmd FileType cs         setlocal sw=4 sts=4 ts=4 et
@@ -122,7 +124,9 @@ autocmd FileType zsh        setlocal sw=4 sts=4 ts=4 et
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set fileencodings+=cp936,gb18030,big5
 "set fileencoding=utf-8
-"set encoding=utf-8
+if &encoding ==# 'latin1' && has('gui_running')
+  set encoding=utf-8
+endif
 "set termencoding=gbk
 "set gfn=Monaco:h10:cANSI
 "set gfw=NSimsun:h12
