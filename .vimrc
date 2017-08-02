@@ -84,7 +84,7 @@ set noswapfile          " turn off swapfile
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set expandtab           " tabs are changed to spaces auto
+"set expandtab           " tabs are changed to spaces auto
 set smarttab            " be smart when use tabs
 set tabstop=2           " number of visual spaces per TAB
 set shiftwidth=2        " number of spaces to use for each step of (auto)indent
@@ -133,15 +133,13 @@ set fileencodings+=cp936,gb18030,big5
 let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
 execute "set rtp+=" . g:opamshare . "/merlin/vim"
 
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " tagbar
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <F8> :TagbarToggle<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ctlp 
+" CtrlP settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ctrlp_map = '<c-p>' 
 let g:ctrlp_cmd = 'CtrlP'
@@ -165,10 +163,6 @@ let g:javascript_plugin_jsdoc = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-syntastic/syntastic
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" For synctastic
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
@@ -176,10 +170,10 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_check_on_w = 0
 let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_python_pylint_args='--disable=C0111,R0903,C0301'
-" let g:syntastic_go_checkers = ['golint', 'govet']
 let g:syntastic_mode_map = {
     \ 'mode': 'passive', 
     \ 'active_filetypes': [], 
     \ 'passive_filetypes': ['go']
 \ }
 map <F4> :SyntasticCheck<CR>
+
