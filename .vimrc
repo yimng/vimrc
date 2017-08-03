@@ -42,7 +42,6 @@ set hidden              " Hide buffers when they are abandoned (default nohidden
 set nostartofline
 set laststatus=2        " Always display the status line, even if only one window is displayed (default value 1)
 set confirm             " instead of failing a command because of unsaved changes, instead raise a
-set history=50
                         " dialogue asking if you wish to save changed files.
 if !has('nvim') && &ttimeoutlen == -1
   set ttimeout
@@ -75,6 +74,7 @@ if !&scrolloff
   set scrolloff=7       " the line before or after cursor when scroll
 endif
 if !&sidescrolloff
+  set sidescroll=1
   set sidescrolloff=5   "
 endif
 
@@ -97,7 +97,7 @@ set shiftwidth=2        " number of spaces to use for each step of (auto)indent
 set softtabstop=2       " number of spaces in tab when editing
 set autoindent          " auto indent
 set smartindent         " smart indent
-set wrap                " wrap lines
+set nowrap              " wrap lines
 set textwidth=0         " set textwidth length
 
 if has("autocmd")
