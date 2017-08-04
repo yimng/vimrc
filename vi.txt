@@ -1,113 +1,112 @@
-:sh 开始一个shell命令行，ctr-D 回到vi
-在vi中，可以ctr-z suspend vi进入命令行，然后fg回到vi
-:e!是回退所有从上次保存以来所有的更改
-~是改变大小写
-z <enter> 把当前行移到屏幕的开始(zt)
-z. 把当前行移动屏幕的中间(zz)
-z- 把当前行移动到屏幕的底部(zb)
-ctrl + L 重绘当前页面
-H 移动光标到屏幕顶
-L 移动光标到屏幕底
-M 移动光标到屏幕中
-J 合并两行
-<< 向左缩进
->> 向右缩进
-ctrl+E 向上滚动屏幕，光标所在行的位置不变
-ctrl+Y 向下滚动屏幕，光标所在行的位置不变
-ctrl+D 向下滚动半屏
-ctrl+F 向下滚动一屏
-ctrl+U 向上滚动半屏
-ctrl+B 向上滚动一屏
-:ju[mps] 打出跳转表
-ctrl+O 转到跳转表里第 [count] 个较旧的光标位置
-ctrl+I 转到跳转表里第 [count] 个较新的光标位置
-打开一个以前打开过文件，按'0可以把光标回到最后退出文件时光标所在的位置
-Ctrl+A / Ctrl+X increments/decrements a number.
+:sh					开始一个shell命令行，ctr-D 回到vi
+ctrl+z & fg 在vi中，可以ctr-z suspend vi进入命令行，然后fg回到vi
+:e!					是回退所有从上次保存以来所有的更改
+~						是改变大小写
+z <enter>		把当前行移到屏幕的开始(zt)
+z.					把当前行移动屏幕的中间(zz)
+z-					把当前行移动到屏幕的底部(zb)
+ctrl + L		重绘当前页面
+H						移动光标到屏幕顶
+L						移动光标到屏幕底
+M						移动光标到屏幕中
+J						合并两行
+<<					向左缩进
+>>					向右缩进
+ctrl+E			向上滚动屏幕，光标所在行的位置不变
+ctrl+Y			向下滚动屏幕，光标所在行的位置不变
+ctrl+D			向下滚动半屏
+ctrl+F			向下滚动一屏
+ctrl+U			向上滚动半屏
+ctrl+B			向上滚动一屏
+:ju[mps]		打出跳转表
+ctrl+O			转到跳转表里第 [count] 个较旧的光标位置
+ctrl+I			转到跳转表里第 [count] 个较新的光标位置
+'0					打开一个以前打开过文件，按'0可以把光标回到最后退出文件时光标所在的位置
+Ctrl+A / Ctrl+X 
+						increments/decrements a number.
 gd          Goto local Declaration
 gD          Goto global Declaration
 gf          Goto file
-[I         Display all lines that contain the keyword under the cursor
-ctrl+]     跳到函数定义
-ctrl+N     补全
-qa         开始record到a
-q          退出record
-@a         重放record a
+[I					Display all lines that contain the keyword under the cursor
+ctrl+]			跳到函数定义
+ctrl+N			补全
+qa					开始record到a
+q						退出record
+@a					重放record a
 
 
 
-d?move 从当前光标处向前删除直到move
+d?move			从当前光标处向前删除直到move
 
-vi +n file 在第n行打开文件file
+vi +n file	在第n行打开文件file
 vi +/pattern file 在第一次匹配的地方打开file
-vi -R file 以只读的方式打开file（相当于view file?)
+vi -R file	以只读的方式打开file（相当于view file?)
 
 vi 默认用1-9到命名九个粘贴板
-"2p 把粘贴板 2 里的内容粘贴出来
-"ayy 把当前行放进命名buffer a里
-当用大写字母命名一个粘贴板时，粘贴板里的内容是append的方式添加
-"Z5dd 删除五行，然后把这五行append到用Z命名的buffer中
-mx 用x来标记当前光标的位置，x可以为任何字母
-mX 用X来标记一个文件，X为任何大字字母，这个标记可以用文件间跳转
-'x 返回标记所在的行
-`x 光标返回标记
-`` 返回光标移动前的位置
+"2p					把粘贴板 2 里的内容粘贴出来
+"ayy				把当前行放进命名buffer a里
+"A					当用大写字母命名一个粘贴板时，粘贴板里的内容是append的方式添加
+"Z5dd				删除五行，然后把这五行append到用Z命名的buffer中
+mx					用x来标记当前光标的位置，x可以为任何字母
+mX					用X来标记一个文件，X为任何大字字母，这个标记可以用文件间跳转
+'x					返回标记所在的行
+`x					光标返回标记
+``					返回光标移动前的位置
 
-Q 进入ex模式
-在ex模式下，按vi回到vi
-:3,18d 3到18行删除
+Q						进入ex模式
+vi					在ex模式下，按vi回到vi
+:3,18d			3到18行删除
 :160,224m23 把160到224行的内容移到23行下
 :23,29co100 把23到29行的内容复制到100下
-:= 显示文件的总行数
-:.= 显示当前的行数
-:1,10# 显示1到10行
+:=					显示文件的总行数
+:.=					显示当前的行数
+:1,10#			显示1到10行
 :/pattern/= 显示第一次匹配到的行数
-. 代表当前行
-$ 代表文件的最后一行
-% 代表文件里的所有行
-:.,$d 从当前行删除到文件结尾
-:%d 删除所有行
-:20,.m$ 把20行到当前行的内容移动到文件末尾
-:.,+20d 把从当前行开始的20行删除
-:226,$m.-2 把226行到文件结尾的行移动到当前行的前面两行处 
+.						代表当前行
+$						代表文件的最后一行
+%						代表文件里的所有行
+:.,$d				从当前行删除到文件结尾
+:%d					删除所有行
+:20,.m$			把20行到当前行的内容移动到文件末尾
+:.,+20d			把从当前行开始的20行删除
+:226,$m.-2	把226行到文件结尾的行移动到当前行的前面两行处 
 :/pattern/d 把下一个匹配的行删除
 :/pattern/+d 把下一个匹配的下一行删除
 :/pattern1/,/pattern2/d 把下一个匹配到pattern1到下一个匹配到pattern2的行删除
 
-保存文件的一部分
 :230,$w newfile 把230行到文件末尾保存到newfile里
 :340,$w >>newfile 把340行到文件末尾追加到newfile里
 
 :185r newfile 把newfile的内容读进当前文件的185行处
 
 vi file1 file2 ...编辑文件1 2 。。。
-:n 编辑下一下文件
-:rew rewind to file1
-:last to last file
+:n					编辑下一下文件
+:rew				rewind to file1
+:last				to last file
 :args (:ar) 列出当前vi打开的文件(当前打开的文件用[])
-:ls 列出buffer，作用同args
-:b1 编辑buffer里第一个文件，1可为2，3，4.。。
+:ls					列出buffer，作用同args
+:b1					编辑buffer里第一个文件，1可为2，3，4.。。
 :bd tab ... 删除buffer
 
 
-:e file 编辑文件file
-% (current filename)
-# (alternate filename)
-:w %.new 把当前文件重命名为filename.new
-ctrl+^ 在current和alternate之间切换
+:e file			编辑文件file
+%						(current filename)
+#						(alternate filename)
+:w %.new		把当前文件重命名为filename.new
+ctrl+^			在current和alternate之间切换
 
-查找和替换
-\c 不区分大小写
+\c					不区分大小写
 :1,30s/his/the/gc  1至30行用the替换his，替换之前确认
 :g/pattern/s/old/new/g 第一个g意思是对全部的行，第二个g是在同一匹配到的行内进行所有替换
 
-:g/^/m0 把文件倒序(第一行变成最后一行)
+:g/^/m0			把文件倒序(第一行变成最后一行)
 :%s/string/&/gn  统计string出现的次数
-\n 会被第n个匹配替换
-& 会被整个匹配替换
+\n					会被第n个匹配替换
+&						会被整个匹配替换
 \u 或者 \l 把下一个字符转换为大写或者小写
 \U 或者 \L \e \E把下面的字符置换为大家或者小写直到匹配的末尾或者是遇到\e 或\E
 :%s/Fortran/\U&/ 把所有的Fortran转换为FORTRAN
-/s 的分隔符可以为 # $ 等
+/s					的分隔符可以为 # $ 等
 
 :20,30!sort 20至30行排序
 
@@ -123,41 +122,41 @@ ctrl+^ 在current和alternate之间切换
 :unmap 
 
 vim 新增的motion
-count% 把光标移动到count%行处
+count%			把光标移动到count%行处
 在text base 模式下，按v进入visual模式，然后再按aw就可以选中一个单词
 下面是在visual模式下的motion:
 countaw countaW 选中count个单词，小写的w是标点等号分隔的单词，W是空格分隔的单词
 countiw countiW 
-as is 选中一个句子
-ap ip 选中一段
+as is				选中一个句子
+ap ip				选中一段
 :help text-objects 查看text-object帮助
 
 ###########################################################################
 vim -o file1 file2 打开multiwindow
-:split 分隔两个窗口
-:vsplit 分隔出两个垂直窗口
-:new 打开一个水平分隔的窗口
+:split			分隔两个窗口
+:vsplit			分隔出两个垂直窗口
+:new				打开一个水平分隔的窗口
 :[n]new [++opt] [+cmd] [file] 
 :[n]split [++opt] [+cmd] [file]
-n 告诉vim在新窗口显示多少行
-opt 向vim传option参数，前面用两个++
-cmd 在新窗口执行的命令
-file 要显示的文件
+n						告诉vim在新窗口显示多少行
+opt					向vim传option参数，前面用两个++
+cmd					在新窗口执行的命令
+file				要显示的文件
 在窗口中移动：
-^W j 向下移动
-^W k 向上移动
-^W h 向左移动
-^W l 向右移动
+^W j				向下移动
+^W k				向上移动
+^W h				向左移动
+^W l				向右移动
 ^W ^W (^W w)在窗口中循环
-^W t 把光标移动到左上角的窗口(t = top)
-^W b 把光标移动到右下角的窗口(b = bottom)
-^W p 把光标移动后上一个窗口
+^W t				把光标移动到左上角的窗口(t = top)
+^W b				把光标移动到右下角的窗口(b = bottom)
+^W p				把光标移动后上一个窗口
 移动窗口
-^W r 向右移动窗口
-^W x 上下移动窗口
+^W r				向右移动窗口
+^W x				上下移动窗口
 
 ###########################################################################
 
-:verbose set option?查看这个option是什么值，在那个配置文件里设置的
-:script 查看vim加载的配置脚本
+:verbose set option?	查看这个option是什么值，在那个配置文件里设置的
+:script			查看vim加载的配置脚本
 
