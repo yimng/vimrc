@@ -38,6 +38,7 @@ if has('syntax') && !exists('g:syntax_on')
 endif
 set autoread            " Set to auto read when a file is changed from the outside (default noautoread)
 set number              " show line numbers (default nonumber)
+set relativenumber      " Show the line number relative to the line with the cursor
 set hidden              " Hide buffers when they are abandoned (default nohidden)
 set nostartofline
 set laststatus=2        " Always display the status line, even if only one window is displayed (default value 1)
@@ -82,23 +83,28 @@ set noswapfile          " turn off swapfile
 "set autowrite          " When set autowrite, vi will automatically write out
                         " the contents of a changed buffer when you issue the :n (next) command to move to the
                         " next file to be edited, and before running a shell command with :!.
+if v:version >= 730
+    set undofile        " keep a persistent backup file
+    set undodir=/tmp/vimundo/
+                        " buckup file folder
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set smarttab            " be smart when use tabs
-set tabstop=4           " number of visual spaces per TAB
+set smartindent         " smart indent
 set shiftwidth=4        " number of spaces to use for each step of (auto)indent
 set softtabstop=4       " number of spaces in tab when editing
+set tabstop=4           " number of visual spaces per TAB
 set autoindent          " auto indent
-set smartindent         " smart indent
 set wrap                " wrap lines
 set textwidth=0         " set textwidth length
 set listchars+=tab:>-   " set the tab visiable when set list
 
 if has("autocmd")
-  autocmd FileType c,cpp,cs,diff,java,perl,php,python,sh,sql,xml,zsh          setlocal sw=4 sts=4 ts=4 et
-  autocmd FileType ocaml,css,html,javascript,vim,yaml                         setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType c,cpp,cs,diff,java,perl,php,python,sh,sql,xml,zsh          setlocal shiftwidth=4 softtabstop=4 tabstop=4 expandtab
+  autocmd FileType ocaml,css,html,javascript,vim,yaml                         setlocal shiftwidth=2 softtabstop=2 tabstop=2 expandtab
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

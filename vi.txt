@@ -29,11 +29,10 @@ gD          Goto global Declaration
 gf          Goto file
 [I          Display all lines that contain the keyword under the cursor
 ctrl+]      跳到函数定义
-ctrl+N      补全
+ctrl+N      补全, 根据当前文档里已经出现的来补全
 qa          开始record到a
 q           退出record
 @a          重放record a
-
 
 
 d?move      从当前光标处向前删除直到move
