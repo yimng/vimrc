@@ -73,11 +73,6 @@ set title               " show file in titlebar
 if !&scrolloff
   set scrolloff=7       " the line before or after cursor when scroll
 endif
-if !&sidescrolloff
-  set sidescroll=1
-  set sidescrolloff=5   "
-endif
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Files and backups
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -97,8 +92,9 @@ set shiftwidth=2        " number of spaces to use for each step of (auto)indent
 set softtabstop=2       " number of spaces in tab when editing
 set autoindent          " auto indent
 set smartindent         " smart indent
-set nowrap              " wrap lines
+set wrap                " wrap lines
 set textwidth=0         " set textwidth length
+set listchars+=tab:>-   " set the tab visiable when set list
 
 if has("autocmd")
   autocmd FileType c,cpp,cs,diff,java,perl,php,python,sh,sql,xml,zsh          setlocal sw=4 sts=4 ts=4 et
