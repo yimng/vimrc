@@ -87,9 +87,9 @@ set noswapfile          " turn off swapfile
 " Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set smarttab            " be smart when use tabs
-set tabstop=2           " number of visual spaces per TAB
-set shiftwidth=2        " number of spaces to use for each step of (auto)indent
-set softtabstop=2       " number of spaces in tab when editing
+set tabstop=4           " number of visual spaces per TAB
+set shiftwidth=4        " number of spaces to use for each step of (auto)indent
+set softtabstop=4       " number of spaces in tab when editing
 set autoindent          " auto indent
 set smartindent         " smart indent
 set wrap                " wrap lines
