@@ -36,12 +36,12 @@ filetype plugin indent on    " required
 if has('syntax') && !exists('g:syntax_on')
   syntax enable         " enable syntax processing
 endif
-set autoread            " Set to auto read when a file is changed from the outside (default noautoread)
-set number              " show line numbers (default nonumber)
+set autoread            " Set to auto read when a file is changed from the outside
+set number              " show line numbers
 set relativenumber      " Show the line number relative to the line with the cursor
-set hidden              " Hide buffers when they are abandoned (default nohidden)
-set nostartofline
-set laststatus=2        " Always display the status line, even if only one window is displayed (default value 1)
+set hidden              " Hide buffers when they are abandoned 
+set nostartofline       " Keep the cursor at the same column as possible
+set laststatus=2        " Always display the status line, even if only one window is displayed 
 set confirm             " instead of failing a command because of unsaved changes, instead raise a
                         " dialogue asking if you wish to save changed files.
 if !has('nvim') && &ttimeoutlen == -1
@@ -53,24 +53,24 @@ set pastetoggle=<F2>    " <F2> toggle the paste and nopaste mode
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set wildmenu            " visual autocomplete for command menu (default nowildmenu)
-set wildignore=*.o,*.obj,*.bak,*.exe,*.py[co],*.swp,*~,.svn,.git
+set wildmenu            " visual autocomplete for command menu 
+set wildignore=*.o,*.obj,*.bak,*.exe,*.py[co],*.swp,*~,.svn,.git,node_modules/**
 set wildmode=list:longest,full
 set backspace=eol,start,indent
 set whichwrap+=<,>      " Add left and right key to wrap the line when move cursor
 set matchpairs+=<:>     " specially for html
-set ignorecase          " ignore case in search patterns (default noignorecase)
-set smartcase           " Override the 'ignorecase' option if the search pattern contians upper case charactors (default smartcase)
-set hlsearch            " highlight matches (default hlsearch)
-set incsearch           " search as characters are enntered (default noincsearh)
-set lazyredraw          " redraw only when we need (default nolazyredraw)
-set showmatch           " hightlight matching [{()}] (default noshowmatch)
+set ignorecase          " ignore case in search patterns
+set smartcase           " Override the 'ignorecase' option if the search pattern contians upper case charactors
+set hlsearch            " highlight matches
+set incsearch           " search as characters are enntered 
+set lazyredraw          " redraw only when we need
+set showmatch           " hightlight matching [{()}] 
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
                         " turn off search highlight by click <space>
 set display+=lastline
 set showmode            " show the vim mode 
-set showcmd             " Show partial commands in the last line of the screen (default noshowcmd)
-set ruler               " Show the line and column number of the cursor position (default ruler)
+set showcmd             " Show partial commands in the last line of the screen
+set ruler               " Show the line and column number of the cursor position
 set title               " show file in titlebar
 if !&scrolloff
   set scrolloff=7       " the line before or after cursor when scroll
@@ -87,7 +87,7 @@ if has('persistent_undo')
     let &undodir = udir
     set undofile        " keep an undo file
 endif
-set path=$PWD/**        " Set current path as vim path
+set path+=$PWD/**        " Set current path as vim path
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text, tab and indent related
@@ -101,6 +101,7 @@ set autoindent          " auto indent
 set wrap                " wrap lines
 set textwidth=0         " set textwidth length
 set listchars+=tab:>-,trail:~,extends:>,precedes:<
+                        " The visible chars to displayed when set list
 
 if has("autocmd")
   autocmd FileType c,cpp,cs,diff,java,perl,php,python,sh,sql,xml,zsh          setlocal shiftwidth=4 softtabstop=4 tabstop=4 expandtab
@@ -135,12 +136,11 @@ nmap <F8> :TagbarToggle<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ctrlp_map = '<c-p>' 
 let g:ctrlp_cmd = 'CtrlP'
-map <leader>f :CtrlPMRU<CR>
 let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
+    \ 'dir':  'node_modules\|\v[\/]\.(git|hg|svn|rvm)$',
     \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
     \ }
-let g:ctrlp_working_path_mode=0
+let g:ctrlp_working_path_mode='ra'
 let g:ctrlp_match_window_bottom=1
 let g:ctrlp_max_height=15
 let g:ctrlp_match_window_reversed=0
