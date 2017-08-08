@@ -134,28 +134,29 @@ ap ip       选中一段
 
 ###########################################################################
 vim -o file1 file2 打开multiwindow
-:split      分隔两个窗口
-:vsplit     分隔出两个垂直窗口
+:sp[lit]    分隔两个水平窗口
+:vs[plit]   分隔出两个垂直窗口
 :new        打开一个水平分隔的窗口
-:[n]new [++opt] [+cmd] [file] 
-:[n]split [++opt] [+cmd] [file]
-n           告诉vim在新窗口显示多少行
-opt         向vim传option参数，前面用两个++
-cmd         在新窗口执行的命令
-file        要显示的文件
-在窗口中移动：
-^W j        向下移动
-^W k        向上移动
-^W h        向左移动
-^W l        向右移动
-^W ^W (^W w)在窗口中循环
-^W t        把光标移动到左上角的窗口(t = top)
-^W b        把光标移动到右下角的窗口(b = bottom)
-^W p        把光标移动后上一个窗口
-移动窗口
-^W r        向右移动窗口
-^W x        上下移动窗口
-
+Ctrl+w s        水平分割当前窗口
+Ctrl+w v        垂直分割当前窗口
+Ctrl+w q        关闭当前窗口
+Ctrl+w n        打开一个新窗口（空文件）
+Ctrl+w o        关闭出当前窗口之外的所有窗口
+Ctrl+w T        当前窗口移动到新标签页
+Ctrl+w h        切换到左边窗口
+Ctrl+w j        切换到下边窗口
+Ctrl+w k        切换到上边窗口
+Ctrl+w l        切换到右边窗口
+Ctrl+w w        遍历切换窗口
+Ctrl+w t        把光标移动到左上角的窗口(t = top)
+Ctrl+w b        把光标移动到右下角的窗口(b = bottom)
+Ctrl+w H        向左移动当前窗口
+Ctrl+w J        向下移动当前窗口
+Ctrl+w K        向上移动当前窗口
+Ctrl+w L        向右移动当前窗口
+Ctrl+w +        增加窗口高度
+Ctrl+w -        减小窗口高度
+Ctrl+w =        统一窗口高度
 ###########################################################################
 :verbose set option?  查看这个option是什么值，在那个配置文件里设置的
 :script     查看vim加载的配置脚本

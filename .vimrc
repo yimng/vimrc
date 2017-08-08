@@ -100,7 +100,7 @@ set tabstop=4           " number of visual spaces per TAB
 set autoindent          " auto indent
 set wrap                " wrap lines
 set textwidth=0         " set textwidth length
-set listchars+=tab:>-   " set the tab visiable when set list
+set listchars+=tab:>-,trail:~,extends:>,precedes:<
 
 if has("autocmd")
   autocmd FileType c,cpp,cs,diff,java,perl,php,python,sh,sql,xml,zsh          setlocal shiftwidth=4 softtabstop=4 tabstop=4 expandtab
