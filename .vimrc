@@ -54,7 +54,8 @@ set pastetoggle=<F2>    " <F2> toggle the paste and nopaste mode
 " VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set wildmenu            " visual autocomplete for command menu (default nowildmenu)
-set wildignore=*.o,*.obj,*.bak,*.exe,*.py[co],*.swp,*~,*.pyc,.svn,.git
+set wildignore=*.o,*.obj,*.bak,*.exe,*.py[co],*.swp,*~,.svn,.git
+set wildmode=list:longest,full
 set backspace=eol,start,indent
 set whichwrap+=<,>      " Add left and right key to wrap the line when move cursor
 set matchpairs+=<:>     " specially for html
@@ -80,14 +81,13 @@ endif
 set nobackup            " turn off backup file
 set nowb                " turn off writebackup
 set noswapfile          " turn off swapfile
-"set autowrite          " When set autowrite, vi will automatically write out
-                        " the contents of a changed buffer when you issue the :n (next) command to move to the
-                        " next file to be edited, and before running a shell command with :!.
-if v:version >= 730
-    set undofile        " keep a persistent backup file
-    set undodir=/tmp/vimundo/
-                        " buckup file folder
+if has('persistent_undo')
+    let udir = '/tmp/vimundo'
+    call system('mkdir ' . udir)
+    let &undodir = udir
+    set undofile        " keep an undo file
 endif
+set path=$PWD/**        " Set current path as vim path
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text, tab and indent related

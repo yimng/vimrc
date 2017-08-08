@@ -84,15 +84,17 @@ vi file1 file2 ...编辑文件1 2 。。。
 :last       to last file
 :args (:ar) 列出当前vi打开的文件(当前打开的文件用[])
 :ls         列出buffer，作用同args
-:b1         编辑buffer里第一个文件，1可为2，3，4.。。
+:b {number, expression}
+			编辑buffer里第number个文件，number可为2，3，4.。。
+:bn[ext]    下一个缓冲区
+:bp[revious]上一个缓冲区
 :bd tab ... 删除buffer
-
+ctrl+^      在current和alternate之间切换
 
 :e file     编辑文件file
 %           (current filename)
 #           (alternate filename)
 :w %.new    把当前文件重命名为filename.new
-ctrl+^      在current和alternate之间切换
 
 \c          不区分大小写
 :1,30s/his/the/gc  1至30行用the替换his，替换之前确认
@@ -155,7 +157,6 @@ file        要显示的文件
 ^W x        上下移动窗口
 
 ###########################################################################
-
 :verbose set option?  查看这个option是什么值，在那个配置文件里设置的
 :script     查看vim加载的配置脚本
 
