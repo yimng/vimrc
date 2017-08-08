@@ -54,7 +54,7 @@ set pastetoggle=<F2>    " <F2> toggle the paste and nopaste mode
 " VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set wildmenu            " visual autocomplete for command menu 
-set wildignore=*.o,*.obj,*.bak,*.exe,*.py[co],*.swp,*~,.svn,.git,node_modules/**
+set wildignore=*.o,*.obj,*.out,*.bak,*.cmo,*.cmi,*.cmx,*.exe,*.py[co],*.swp,*~,.svn,.git,node_modules/**
 set wildmode=list:longest,full
 set backspace=eol,start,indent
 set whichwrap+=<,>      " Add left and right key to wrap the line when move cursor
@@ -137,7 +137,7 @@ nmap <F8> :TagbarToggle<CR>
 let g:ctrlp_map = '<c-p>' 
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_custom_ignore = {
-    \ 'dir':  'node_modules\|\v[\/]\.(git|hg|svn|rvm)$',
+    \ 'dir':  'dist\|node_modules\|\v[\/]\.(git|hg|svn|rvm)$',
     \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
     \ }
 let g:ctrlp_working_path_mode='ra'
