@@ -167,3 +167,4 @@ let g:syntastic_mode_map = {
     \ 'passive_filetypes': ['go']
 \ }
 map <F4> :SyntasticCheck<CR>
+
