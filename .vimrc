@@ -81,11 +81,7 @@ set showmatch           " hightlight matching [{()}]
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Files and backups
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has("vms")
-  set nobackup          " do not keep a backup file, use versions instead
-else
-  set backup            " keep a backup file
-endif
+set nobackup            " do not keep a backup file, use versions instead
 set autoread            " Set to auto read when a file is changed from the outside
 set nowb                " turn off writebackup
 set noswapfile          " turn off swapfile
