@@ -9,6 +9,7 @@ ctrl + L    重绘当前页面
 H           移动光标到屏幕顶
 L           移动光标到屏幕底
 M           移动光标到屏幕中
+``          返回光标移动前的位置
 J           合并两行
 <<          向左缩进
 >>          向右缩进
@@ -28,7 +29,7 @@ gd          Goto local Declaration
 gD          Goto global Declaration
 gf          Goto file
 [I          Display all lines that contain the keyword under the cursor
-ctrl+]      跳到函数定义
+ctrl+]      跳到函数定义,根据tag来跳转
 ctrl+N      补全, 根据当前文档里已经出现的来补全
 qa          开始record到a
 q           退出record
@@ -50,7 +51,6 @@ mx          用x来标记当前光标的位置，x可以为任何字母
 mX          用X来标记一个文件，X为任何大字字母，这个标记可以用文件间跳转
 'x          返回标记所在的行
 `x          光标返回标记
-``          返回光标移动前的位置
 
 Q           进入ex模式
 vi          在ex模式下，按vi回到vi

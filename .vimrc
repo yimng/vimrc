@@ -15,7 +15,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'rking/ag.vim'
+Plugin 'albfan/ag.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-syntastic/syntastic'
@@ -39,7 +39,7 @@ if !has('nvim') && &ttimeoutlen == -1
   set ttimeoutlen=200
 endif
 set pastetoggle=<F2>    " <F2> toggle the paste and nopaste mode
-set path+=$PWD/**        " Set current path as vim path
+set path+=$PWD/**       " Set current path as vim path
 set wrap                " wrap lines
 set textwidth=0         " set textwidth length
 
@@ -52,16 +52,11 @@ set wildmode=list:longest,full
 set backspace=eol,start,indent
 set whichwrap+=<,>      " Add left and right key to wrap the line when move cursor
 set lazyredraw          " redraw only when we need
-nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
-                        " turn off search highlight by click <space>
 set display+=lastline
 set showmode            " show the vim mode 
 set showcmd             " Show partial commands in the last line of the screen
 set ruler               " Show the line and column number of the cursor position
 set title               " show file in titlebar
-if !&scrolloff
-  set scrolloff=16      " the line before or after cursor when scroll
-endif
 set ttyfast             " Indicates a fast terminal connection
 set laststatus=2        " Always display the status line, even if only one window is displayed 
 set number              " show line numbers
@@ -77,6 +72,8 @@ set hlsearch            " highlight matches
 set matchpairs+=<:>     " specially for html
 set incsearch           " search as characters are enntered 
 set showmatch           " hightlight matching [{()}] 
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+                        " turn off search highlight by click <space>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Files and backups
@@ -135,13 +132,12 @@ let g:ctrlp_custom_ignore = {
     \ 'dir':  'dist\|node_modules\|\v[\/]\.(git|hg|svn|rvm)$',
     \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
     \ }
-let g:ctrlp_working_path_mode='ra'
+let g:ctrlp_working_path_mode=0
 let g:ctrlp_match_window_bottom=1
 let g:ctrlp_max_height=15
 let g:ctrlp_match_window_reversed=0
 let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-syntastic/syntastic
