@@ -1,11 +1,11 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" A basic vim config file with plugin
+" A basic vim config file with plugins
 " author: Lukun
 " email: yimng@me.com
 " version: 1.0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible        " be iMproved, required
+filetype off            " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -31,20 +31,17 @@ filetype plugin indent on    " required
 if has('syntax') && !exists('g:syntax_on')
   syntax enable         " enable syntax processing
 endif
-set autoread            " Set to auto read when a file is changed from the outside
-set number              " show line numbers
-set relativenumber      " Show the line number relative to the line with the cursor
 set hidden              " Hide buffers when they are abandoned 
-set nostartofline       " Keep the cursor at the same column as possible
-set laststatus=2        " Always display the status line, even if only one window is displayed 
 set confirm             " instead of failing a command because of unsaved changes, instead raise a
                         " dialogue asking if you wish to save changed files.
 if !has('nvim') && &ttimeoutlen == -1
   set ttimeout
   set ttimeoutlen=200
 endif
-set ttyfast             " Indicates a fast terminal connection
 set pastetoggle=<F2>    " <F2> toggle the paste and nopaste mode
+set path+=$PWD/**        " Set current path as vim path
+set wrap                " wrap lines
+set textwidth=0         " set textwidth length
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM user interface
@@ -54,13 +51,7 @@ set wildignore=*.o,*.obj,*.out,*.bak,*.cmo,*.cmi,*.cmx,*.exe,*.py[co],*.swp,*~,.
 set wildmode=list:longest,full
 set backspace=eol,start,indent
 set whichwrap+=<,>      " Add left and right key to wrap the line when move cursor
-set matchpairs+=<:>     " specially for html
-set ignorecase          " ignore case in search patterns
-set smartcase           " Override the 'ignorecase' option if the search pattern contians upper case charactors
-set hlsearch            " highlight matches
-set incsearch           " search as characters are enntered 
 set lazyredraw          " redraw only when we need
-set showmatch           " hightlight matching [{()}] 
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
                         " turn off search highlight by click <space>
 set display+=lastline
@@ -69,8 +60,24 @@ set showcmd             " Show partial commands in the last line of the screen
 set ruler               " Show the line and column number of the cursor position
 set title               " show file in titlebar
 if !&scrolloff
-  set scrolloff=7       " the line before or after cursor when scroll
+  set scrolloff=16      " the line before or after cursor when scroll
 endif
+set ttyfast             " Indicates a fast terminal connection
+set laststatus=2        " Always display the status line, even if only one window is displayed 
+set number              " show line numbers
+set relativenumber      " Show the line number relative to the line with the cursor
+set nostartofline       " Keep the cursor at the same column as possible
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" search 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set ignorecase          " ignore case in search patterns
+set smartcase           " Override the 'ignorecase' option if the search pattern contians upper case charactors
+set hlsearch            " highlight matches
+set matchpairs+=<:>     " specially for html
+set incsearch           " search as characters are enntered 
+set showmatch           " hightlight matching [{()}] 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Files and backups
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -79,6 +86,7 @@ if has("vms")
 else
   set backup            " keep a backup file
 endif
+set autoread            " Set to auto read when a file is changed from the outside
 set nowb                " turn off writebackup
 set noswapfile          " turn off swapfile
 if has('persistent_undo')
@@ -87,7 +95,6 @@ if has('persistent_undo')
     let &undodir = udir
     set undofile        " keep an undo file
 endif
-set path+=$PWD/**        " Set current path as vim path
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text, tab and indent related
@@ -98,8 +105,6 @@ set shiftwidth=4        " number of spaces to use for each step of (auto)indent
 set softtabstop=4       " number of spaces in tab when editing
 set tabstop=4           " number of visual spaces per TAB
 set autoindent          " auto indent
-set wrap                " wrap lines
-set textwidth=0         " set textwidth length
 set listchars+=tab:>-,trail:~,extends:>,precedes:<
                         " The visible chars to displayed when set list
 if has("autocmd")
@@ -113,9 +118,6 @@ endif
 " Support Chinese Character
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set fileencodings+=cp936,gb18030,big5
-if &encoding ==# 'latin1' && has('gui_running')
-  set encoding=utf-8
-endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Support OCaml with merlin
@@ -144,11 +146,6 @@ let g:ctrlp_match_window_reversed=0
 let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-javascript
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:javascript_plugin_jsdoc = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-syntastic/syntastic
