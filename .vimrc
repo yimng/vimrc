@@ -15,8 +15,9 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'rking/ag.vim'
-Plugin 'majutsushi/tagbar'
+"Plugin 'rking/ag.vim'
+Plugin 'dyng/ctrlsf.vim'
+"Plugin 'majutsushi/tagbar'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-syntastic/syntastic'
 
@@ -34,14 +35,11 @@ endif
 set hidden              " Hide buffers when they are abandoned 
 set confirm             " instead of failing a command because of unsaved changes, instead raise a
                         " dialogue asking if you wish to save changed files.
-if !has('nvim') && &ttimeoutlen == -1
-  set ttimeout
-  set ttimeoutlen=200
-endif
 set pastetoggle=<F2>    " <F2> toggle the paste and nopaste mode
 set path+=$PWD/**       " Set current path as vim path
 set wrap                " wrap lines
 set textwidth=0         " set textwidth length
+set cursorline          " Highlight the screen line of the cursor with CursorLine
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM user interface
@@ -119,12 +117,7 @@ let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
 execute "set rtp+=" . g:opamshare . "/merlin/vim"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" tagbar
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <F8> :TagbarToggle<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" CtrlP settings
+" vim/ctrlp.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ctrlp_map = '<c-p>' 
 let g:ctrlp_cmd = 'CtrlP'
@@ -156,3 +149,15 @@ let g:syntastic_mode_map = {
     \ 'passive_filetypes': ['go']
 \ }
 map <F4> :SyntasticCheck<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" dyng/ctrlsf.vim 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap     <C-F>f <Plug>CtrlSFPrompt
+vmap     <C-F>f <Plug>CtrlSFVwordPath
+vmap     <C-F>F <Plug>CtrlSFVwordExec
+nmap     <C-F>n <Plug>CtrlSFCwordPath
+nmap     <C-F>p <Plug>CtrlSFPwordPath
+nnoremap <C-F>o :CtrlSFOpen<CR>
+nnoremap <C-F>t :CtrlSFToggle<CR>
+inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
