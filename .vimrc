@@ -39,7 +39,7 @@ set pastetoggle=<F2>    " <F2> toggle the paste and nopaste mode
 set path+=$PWD/**       " Set current path as vim path
 set wrap                " wrap lines
 set textwidth=0         " set textwidth length
-set cursorline          " Highlight the screen line of the cursor with CursorLine
+"set cursorline          " Highlight the screen line of the cursor with CursorLine
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM user interface
@@ -84,7 +84,7 @@ if has('persistent_undo')
     let udir = '/tmp/vimundo'
     call system('mkdir ' . udir)
     let &undodir = udir
-    set undofile        " keep an undo file
+    set undofile        " keep an undo file in /tmp/vimundo
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -122,14 +122,12 @@ execute "set rtp+=" . g:opamshare . "/merlin/vim"
 let g:ctrlp_map = '<c-p>' 
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_custom_ignore = {
-    \ 'dir':  'dist\|node_modules\|\v[\/]\.(git|hg|svn|rvm)$',
+    \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
     \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
     \ }
-let g:ctrlp_working_path_mode=0
+let g:ctrlp_working_path_mode='ra'
 let g:ctrlp_match_window_bottom=1
-let g:ctrlp_max_height=15
 let g:ctrlp_match_window_reversed=0
-let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -161,3 +159,6 @@ nmap     <C-F>p <Plug>CtrlSFPwordPath
 nnoremap <C-F>o :CtrlSFOpen<CR>
 nnoremap <C-F>t :CtrlSFToggle<CR>
 inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
+
+
+
