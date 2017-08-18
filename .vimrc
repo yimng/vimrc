@@ -15,9 +15,8 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-"Plugin 'rking/ag.vim'
 Plugin 'dyng/ctrlsf.vim'
-"Plugin 'majutsushi/tagbar'
+Plugin 'majutsushi/tagbar'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-syntastic/syntastic'
 
@@ -45,7 +44,7 @@ set textwidth=0         " set textwidth length
 " VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set wildmenu            " visual autocomplete for command menu 
-set wildignore=*.o,*.obj,*.out,*.bak,*.cmo,*.cmi,*.cmx,*.exe,*.py[co],*.swp,*~,.svn,.git,node_modules/**
+set wildignore=*.o,*.obj,*.out,*.bak,*.cmo,*.cmi,*.cmx,*.exe,*.py[co],*.swp,*~,.svn,.git
 set wildmode=list:longest,full
 set backspace=eol,start,indent
 set whichwrap+=<,>      " Add left and right key to wrap the line when move cursor
@@ -133,20 +132,14 @@ let g:ctrlp_follow_symlinks=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-syntastic/syntastic
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_check_on_w = 0
-let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_ocaml_checkers = ['merlin']
-let g:syntastic_python_pylint_args='--disable=C0111,R0903,C0301'
-let g:syntastic_mode_map = {
-    \ 'mode': 'passive', 
-    \ 'active_filetypes': [], 
-    \ 'passive_filetypes': ['go']
-\ }
-map <F4> :SyntasticCheck<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " dyng/ctrlsf.vim 
@@ -160,5 +153,8 @@ nnoremap <C-F>o :CtrlSFOpen<CR>
 nnoremap <C-F>t :CtrlSFToggle<CR>
 inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
 
-
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" majutsushi/tagbar 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <F8> :TagbarToggle<CR>
 
