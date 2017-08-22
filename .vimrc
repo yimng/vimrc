@@ -19,6 +19,9 @@ Plugin 'dyng/ctrlsf.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-syntastic/syntastic'
+Plugin 'tpope/vim-fugitive'
+Plugin 'vim-airline/vim-airline'
+Plugin 'scrooloose/nerdtree'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -157,4 +160,11 @@ inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
 " majutsushi/tagbar 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <F8> :TagbarToggle<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" scrooloose/nerdtree
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <F3> :NERDTreeToggle<CR>
+
+
 
