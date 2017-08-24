@@ -29,17 +29,18 @@ gD          Goto global Declaration
 gf          Goto file
 [I          Display all lines that contain the keyword under the cursor
 ctrl+]      跳到函数定义,根据tag来跳转
-ctrl+T		和ctrl+]相反
-K			看光标所指的标识符的 man文件
-0			数字零，到行头
-^			到本行第一个不是blank字符的位置
-$			到本行行尾
-g_			到本行最后一个不是blank字符的位置
-%			匹配括号移动，包括 (, {, [. （需要把光标先移到括号上）
+ctrl+T		  和ctrl+]相反
+K			      看光标所指的标识符的 man文件
+0			      数字零，到行头
+^			      到本行第一个不是blank字符的位置
+$			      到本行行尾
+g_			    到本行最后一个不是blank字符的位置
+%			      匹配括号移动，包括 (, {, [. （需要把光标先移到括号上）
 ##############################################
 文本搜索
 ##############################################
 f(F)x       在光标所在行进行查找, 查找光标右(左)方第一个x字符.
+t(T)x       
 \c          不区分大小写
 ############################################
 编辑文本
@@ -47,12 +48,11 @@ f(F)x       在光标所在行进行查找, 查找光标右(左)方第一个x字
 $           代表文件的最后一行
 %           代表文件里的所有行
 :.,$d       从当前行删除到文件结尾
-:m+			把当前行下移一行
-:20,.m$     把20行到当前行的内容移动到文件末尾
-:.,+20d     把从当前行开始的20行删除
+:m+			    把当前行下移一行
+:20,.m$     把20行到当前行的内容移动到文件末尾 :.,+20d     把从当前行开始的20行删除
 :226,$m.-2  把226行到文件结尾的行移动到当前行的前面两行处 
 :/pattern/d 把下一个匹配的行删除
-:/pattern/+d 把下一个匹配的下一行删除
+:/pattern/+d把下一个匹配的下一行删除
 :3,18d      3到18行删除
 :160,224m23 把160到224行的内容移到23行下
 :23,29co100 把23到29行的内容复制到100下
@@ -66,13 +66,13 @@ $           代表文件的最后一行
 \u 或者 \l 把下一个字符转换为大写或者小写
 \U 或者 \L \e \E把下面的字符置换为大家或者小写直到匹配的末尾或者是遇到\e 或\E
 :%s/Fortran/\U&/ 把所有的Fortran转换为FORTRAN
-/s          的分隔符可以为 # $ 等
+/s          分隔符可以为 # $ 等
 ~           是改变大小写
 :e!         是回退所有从上次保存以来所有的更改
 :%d         删除所有行
 d?move      从当前光标处向前删除直到move
-V			选中当前行
-yy或Y		复制当前行
+V			      选中当前行
+yy或Y		    复制当前行
 qa          开始record到a
 q           退出record
 @a          重放record a
@@ -112,7 +112,7 @@ ctrl+^      在current和alternate之间切换
 ###############################################
 粘贴板和标记
 ###############################################
-:reg		查看粘贴
+:reg		    查看粘贴
 vi 默认用1-9到命名九个粘贴板
 "2p         把粘贴板 2 里的内容粘贴出来
 "ayy        把当前行放进命名buffer a里
@@ -125,14 +125,14 @@ mX          用X来标记一个文件，X为任何大字字母，这个标记可
 ###############################################
 模式切换
 ###############################################
-v			进入visual模式
-ctrl+v		区块选取
-< >			在visual模式下左右缩进选中的文本
-=			在visual模式下自动缩进选中的文本
+v			      进入visual模式
+ctrl+v	  	区块选取
+< >			    在visual模式下左右缩进选中的文本
+=			      在visual模式下自动缩进选中的文本
 vi          在ex模式下，按vi回到vi
 :=          显示文件的总行数
 :.=         显示当前的行数
-ctrl+G		同上
+ctrl+G		  同上
 Q           进入ex模式
 :1,10#      显示1到10行
 :/pattern/= 显示第一次匹配到的行数
@@ -151,26 +151,26 @@ Q           进入ex模式
 vim 新增的motion
 count%			把光标移动到count%行处
 :help text-objects 查看text-object帮助
-aw				包括单词前后空格
-iw				不包括单词前后空格
-as				一个句子
-is				inner sentense
-a”				– a double quoted string
-i”			   – inner double quoted string
-a’			   – a single quoted string
-i’			   – inner single quoted string
-a`			   – a back quoted string
-i`			   – inner back quoted string
-a)			   – a parenthesized block
-i)			   – inner parenthesized block
-a]			   – a bracketed block
-i]			   – inner bracketed block
-a}			   – a brace block
-i}			   – inner brace block
+aw				  包括单词前后空格
+iw				  不包括单词前后空格
+as				  一个句子
+is				  inner sentense
+a”				  a double quoted string
+i”			    inner double quoted string
+a’			    a single quoted string
+i’			    inner single quoted string
+a`			    a back quoted string
+i`			    inner back quoted string
+a)			    a parenthesized block
+i)			    inner parenthesized block
+a]			    a bracketed block
+i]			    inner bracketed block
+a}			    a brace block
+i}			    inner brace block
 
-###########################################################################
+###################################################
 多窗口
-#######################################################################
+###################################################
 vim -o file1 file2 打开multiwindow
 :sp[lit]		分隔两个水平窗口
 :vs[plit]		分隔出两个垂直窗口
@@ -195,5 +195,4 @@ Ctrl+w L        向右移动当前窗口
 Ctrl+w +        增加窗口高度
 Ctrl+w -        减小窗口高度
 Ctrl+w =        统一窗口高度
-###########################################################################
 
