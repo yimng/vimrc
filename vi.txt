@@ -1,5 +1,7 @@
 :sh         开始一个shell命令行，ctr-D 回到vi
 ctrl+z & fg 在vi中，可以ctr-z suspend vi进入命令行，然后fg回到vi
+:verbose set option?  查看这个option是什么值，在那个配置文件里设置的
+:script     查看vim加载的配置脚本
 ##################################################
 移动光标
 ##################################################
@@ -29,6 +31,11 @@ gf          Goto file
 ctrl+]      跳到函数定义,根据tag来跳转
 ctrl+T		和ctrl+]相反
 K			看光标所指的标识符的 man文件
+0			数字零，到行头
+^			到本行第一个不是blank字符的位置
+$			到本行行尾
+g_			到本行最后一个不是blank字符的位置
+%			匹配括号移动，包括 (, {, [. （需要把光标先移到括号上）
 ##############################################
 文本搜索
 ##############################################
@@ -70,6 +77,7 @@ qa          开始record到a
 q           退出record
 @a          重放record a
 ctrl+N      补全, 根据当前文档里已经出现的来补全
+ctrl+P		
 <<          向左缩进
 >>          向右缩进
 Ctrl+A / Ctrl+X 
@@ -119,6 +127,8 @@ mX          用X来标记一个文件，X为任何大字字母，这个标记可
 ###############################################
 v			进入visual模式
 ctrl+v		区块选取
+< >			在visual模式下左右缩进选中的文本
+=			在visual模式下自动缩进选中的文本
 vi          在ex模式下，按vi回到vi
 :=          显示文件的总行数
 :.=         显示当前的行数
@@ -145,18 +155,18 @@ aw				包括单词前后空格
 iw				不包括单词前后空格
 as				一个句子
 is				inner sentense
-a” – a double quoted string
-i” – inner double quoted string
-a’ – a single quoted string
-i’ – inner single quoted string
-a` – a back quoted string
-i` – inner back quoted string
-a) – a parenthesized block
-i) – inner parenthesized block
-a] – a bracketed block
-i] – inner bracketed block
-a} – a brace block
-i} – inner brace block
+a”				– a double quoted string
+i”			   – inner double quoted string
+a’			   – a single quoted string
+i’			   – inner single quoted string
+a`			   – a back quoted string
+i`			   – inner back quoted string
+a)			   – a parenthesized block
+i)			   – inner parenthesized block
+a]			   – a bracketed block
+i]			   – inner bracketed block
+a}			   – a brace block
+i}			   – inner brace block
 
 ###########################################################################
 多窗口
@@ -186,6 +196,4 @@ Ctrl+w +        增加窗口高度
 Ctrl+w -        减小窗口高度
 Ctrl+w =        统一窗口高度
 ###########################################################################
-:verbose set option?  查看这个option是什么值，在那个配置文件里设置的
-:script     查看vim加载的配置脚本
 

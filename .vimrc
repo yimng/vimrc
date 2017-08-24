@@ -52,7 +52,7 @@ set wildmode=list:longest,full
 set backspace=eol,start,indent
 set whichwrap+=<,>      " Add left and right key to wrap the line when move cursor
 set lazyredraw          " redraw only when we need
-set display+=lastline
+set display+=lastline   " When included, as much as possible of the last line in a window will be displayed
 set showmode            " show the vim mode 
 set showcmd             " Show partial commands in the last line of the screen
 set ruler               " Show the line and column number of the cursor position
