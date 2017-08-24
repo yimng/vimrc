@@ -29,13 +29,13 @@ gD          Goto global Declaration
 gf          Goto file
 [I          Display all lines that contain the keyword under the cursor
 ctrl+]      跳到函数定义,根据tag来跳转
-ctrl+T		  和ctrl+]相反
-K			      看光标所指的标识符的 man文件
-0			      数字零，到行头
-^			      到本行第一个不是blank字符的位置
-$			      到本行行尾
-g_			    到本行最后一个不是blank字符的位置
-%			      匹配括号移动，包括 (, {, [. （需要把光标先移到括号上）
+ctrl+T      和ctrl+]相反
+K           看光标所指的标识符的 man文件
+0           数字零，到行头
+^           到本行第一个不是blank字符的位置
+$           到本行行尾
+g_          到本行最后一个不是blank字符的位置
+%           匹配括号移动，包括 (, {, [. （需要把光标先移到括号上）
 ##############################################
 文本搜索
 ##############################################
@@ -48,7 +48,7 @@ t(T)x
 $           代表文件的最后一行
 %           代表文件里的所有行
 :.,$d       从当前行删除到文件结尾
-:m+			    把当前行下移一行
+:m+         把当前行下移一行
 :20,.m$     把20行到当前行的内容移动到文件末尾 :.,+20d     把从当前行开始的20行删除
 :226,$m.-2  把226行到文件结尾的行移动到当前行的前面两行处 
 :/pattern/d 把下一个匹配的行删除
@@ -71,13 +71,13 @@ $           代表文件的最后一行
 :e!         是回退所有从上次保存以来所有的更改
 :%d         删除所有行
 d?move      从当前光标处向前删除直到move
-V			      选中当前行
-yy或Y		    复制当前行
+V           选中当前行
+yy或Y       复制当前行
 qa          开始record到a
 q           退出record
 @a          重放record a
 ctrl+N      补全, 根据当前文档里已经出现的来补全
-ctrl+P		
+ctrl+P      
 <<          向左缩进
 >>          向右缩进
 Ctrl+A / Ctrl+X 
@@ -99,7 +99,7 @@ vi file1 file2 ...编辑文件1 2 。。。
 :args (:ar) 列出当前vi打开的文件(当前打开的文件用[])
 :ls         列出buffer，作用同args
 :b {number, expression}
-			编辑buffer里第number个文件，number可为2，3，4.。。
+            编辑buffer里第number个文件，number可为2，3，4.。。
 :bn[ext]    下一个缓冲区
 :bp[revious]上一个缓冲区
 :bd tab ... 删除buffer
@@ -112,7 +112,7 @@ ctrl+^      在current和alternate之间切换
 ###############################################
 粘贴板和标记
 ###############################################
-:reg		    查看粘贴
+:reg        查看粘贴
 vi 默认用1-9到命名九个粘贴板
 "2p         把粘贴板 2 里的内容粘贴出来
 "ayy        把当前行放进命名buffer a里
@@ -125,14 +125,14 @@ mX          用X来标记一个文件，X为任何大字字母，这个标记可
 ###############################################
 模式切换
 ###############################################
-v			      进入visual模式
-ctrl+v	  	区块选取
-< >			    在visual模式下左右缩进选中的文本
-=			      在visual模式下自动缩进选中的文本
+v           进入visual模式
+ctrl+v      区块选取
+< >         在visual模式下左右缩进选中的文本
+=           在visual模式下自动缩进选中的文本
 vi          在ex模式下，按vi回到vi
 :=          显示文件的总行数
 :.=         显示当前的行数
-ctrl+G		  同上
+ctrl+G      同上
 Q           进入ex模式
 :1,10#      显示1到10行
 :/pattern/= 显示第一次匹配到的行数
@@ -144,55 +144,55 @@ Q           进入ex模式
 
 
 :ab abbr long command   把long command用abbr来代替
-:unab abbr              取消abbr
-:map v dwelp              交换单词
+:unab abbr  取消abbr
+:map v dwelp交换单词
 :unmap 
 
 vim 新增的motion
-count%			把光标移动到count%行处
+count%      把光标移动到count%行处
 :help text-objects 查看text-object帮助
-aw				  包括单词前后空格
-iw				  不包括单词前后空格
-as				  一个句子
-is				  inner sentense
-a”				  a double quoted string
-i”			    inner double quoted string
-a’			    a single quoted string
-i’			    inner single quoted string
-a`			    a back quoted string
-i`			    inner back quoted string
-a)			    a parenthesized block
-i)			    inner parenthesized block
-a]			    a bracketed block
-i]			    inner bracketed block
-a}			    a brace block
-i}			    inner brace block
+aw          包括单词前后空格
+iw          不包括单词前后空格
+as          一个句子
+is          inner sentense
+a”          a double quoted string
+i”          inner double quoted string
+a’          a single quoted string
+i’          inner single quoted string
+a`          a back quoted string
+i`          inner back quoted string
+a)          a parenthesized block
+i)          inner parenthesized block
+a]          a bracketed block
+i]          inner bracketed block
+a}          a brace block
+i}          inner brace block
 
 ###################################################
 多窗口
 ###################################################
 vim -o file1 file2 打开multiwindow
-:sp[lit]		分隔两个水平窗口
-:vs[plit]		分隔出两个垂直窗口
-:new			打开一个水平分隔的窗口
-Ctrl+w s        水平分割当前窗口
-Ctrl+w v        垂直分割当前窗口
-Ctrl+w q        关闭当前窗口
-Ctrl+w n        打开一个新窗口（空文件）
-Ctrl+w o        关闭出当前窗口之外的所有窗口
-Ctrl+w T        当前窗口移动到新标签页
-Ctrl+w h        切换到左边窗口
-Ctrl+w j        切换到下边窗口
-Ctrl+w k        切换到上边窗口
-Ctrl+w l        切换到右边窗口
-Ctrl+w w        遍历切换窗口
-Ctrl+w t        把光标移动到左上角的窗口(t = top)
-Ctrl+w b        把光标移动到右下角的窗口(b = bottom)
-Ctrl+w H        向左移动当前窗口
-Ctrl+w J        向下移动当前窗口
-Ctrl+w K        向上移动当前窗口
-Ctrl+w L        向右移动当前窗口
-Ctrl+w +        增加窗口高度
-Ctrl+w -        减小窗口高度
-Ctrl+w =        统一窗口高度
+:sp[lit]    分隔两个水平窗口
+:vs[plit]   分隔出两个垂直窗口
+:new        打开一个水平分隔的窗口
+Ctrl+w s    水平分割当前窗口
+Ctrl+w v    垂直分割当前窗口
+Ctrl+w q    关闭当前窗口
+Ctrl+w n    打开一个新窗口（空文件）
+Ctrl+w o    关闭出当前窗口之外的所有窗口
+Ctrl+w T    当前窗口移动到新标签页
+Ctrl+w h    切换到左边窗口
+Ctrl+w j    切换到下边窗口
+Ctrl+w k    切换到上边窗口
+Ctrl+w l    切换到右边窗口
+Ctrl+w w    遍历切换窗口
+Ctrl+w t    把光标移动到左上角的窗口(t = top)
+Ctrl+w b    把光标移动到右下角的窗口(b = bottom)
+Ctrl+w H    向左移动当前窗口
+Ctrl+w J    向下移动当前窗口
+Ctrl+w K    向上移动当前窗口
+Ctrl+w L    向右移动当前窗口
+Ctrl+w +    增加窗口高度
+Ctrl+w -    减小窗口高度
+Ctrl+w =    统一窗口高度
 
