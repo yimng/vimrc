@@ -44,7 +44,7 @@ set wrap                " wrap lines
 set textwidth=0         " set textwidth length
 set scrolljump=5        " Lines to scroll when cursor leaves the screen
 set shortmess+=filmnrxoOtT
-                         " Abbrev. of messages (avoids 'hit enter')
+                        " Abbrev. of messages (avoids 'hit enter')
 set viewoptions+=unix,slash
                          " Better Unix / Windows compatibility
 "set cursorline          " Highlight the screen line of the cursor with CursorLine
