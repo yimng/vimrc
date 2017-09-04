@@ -23,6 +23,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'scrooloose/nerdtree'
 Plugin 'FelikZ/ctrlp-py-matcher'
+Plugin 'morhetz/gruvbox'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -67,6 +68,7 @@ set laststatus=2        " Always display the status line, even if only one windo
 set number              " show line numbers
 set relativenumber      " Show the line number relative to the line with the cursor
 set nostartofline       " Keep the cursor at the same column as possible
+colorscheme gruvbox
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " search 
@@ -171,3 +173,4 @@ nmap <F8> :TagbarToggle<CR>
 " scrooloose/nerdtree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <F3> :NERDTreeToggle<CR>
+
