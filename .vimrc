@@ -15,14 +15,13 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'dyng/ctrlsf.vim'
-Plugin 'majutsushi/tagbar'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'dyng/ctrlsf.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'majutsushi/tagbar'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-fugitive'
-Plugin 'vim-airline/vim-airline'
 Plugin 'scrooloose/nerdtree'
-Plugin 'FelikZ/ctrlp-py-matcher'
 Plugin 'morhetz/gruvbox'
 
 " All of your Plugins must be added before the following line
@@ -44,10 +43,8 @@ set path+=$PWD/**       " Set current path as vim path
 set wrap                " wrap lines
 set textwidth=0         " set textwidth length
 set scrolljump=5        " Lines to scroll when cursor leaves the screen
-set shortmess+=mr       " Abbrev. of messaage (avoids 'hit enter')
-set viewoptions+=unix,slash
-                         " Better Unix / Windows compatibility
-"set cursorline          " Highlight the screen line of the cursor with CursorLine
+set fileencodings+=cp936,gb18030,big5
+                        " Support Chinese
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM user interface
@@ -58,7 +55,6 @@ set wildmode=list:longest,full
 set backspace=eol,start,indent
 set whichwrap+=<,>      " Add left and right key to wrap the line when move cursor
 set lazyredraw          " redraw only when we need
-set display+=lastline   " When included, as much as possible of the last line in a window will be displayed
 set showmode            " show the vim mode 
 set showcmd             " Show partial commands in the last line of the screen
 set ruler               " Show the line and column number of the cursor position
@@ -68,6 +64,7 @@ set laststatus=2        " Always display the status line, even if only one windo
 set number              " show line numbers
 set relativenumber      " Show the line number relative to the line with the cursor
 set nostartofline       " Keep the cursor at the same column as possible
+set display+=lastline   " When included, as much as possible of the last line in a window will be displayed
 colorscheme gruvbox
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -114,11 +111,6 @@ if has("autocmd")
         \ setlocal shiftwidth=2 softtabstop=2 tabstop=2 expandtab
 endif
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Support Chinese Character
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set fileencodings+=cp936,gb18030,big5
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Support OCaml with merlin
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -138,7 +130,6 @@ let g:ctrlp_working_path_mode='ra'
 let g:ctrlp_match_window_bottom=1
 let g:ctrlp_match_window_reversed=0
 let g:ctrlp_follow_symlinks=1
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-syntastic/syntastic
