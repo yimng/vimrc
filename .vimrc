@@ -43,8 +43,7 @@ set path+=$PWD/**       " Set current path as vim path
 set wrap                " wrap lines
 set textwidth=0         " set textwidth length
 set scrolljump=5        " Lines to scroll when cursor leaves the screen
-set shortmess+=filmnrxoOtT
-                        " Abbrev. of messages (avoids 'hit enter')
+set shortmess+=mr       " Abbrev. of messaage (avoids 'hit enter')
 set viewoptions+=unix,slash
                          " Better Unix / Windows compatibility
 "set cursorline          " Highlight the screen line of the cursor with CursorLine
@@ -172,6 +171,3 @@ nmap <F8> :TagbarToggle<CR>
 " scrooloose/nerdtree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <F3> :NERDTreeToggle<CR>
-
-
-
