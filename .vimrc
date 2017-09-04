@@ -22,7 +22,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
-Plugin 'morhetz/gruvbox'
+"Plugin 'morhetz/gruvbox'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -65,7 +65,7 @@ set number              " show line numbers
 set relativenumber      " Show the line number relative to the line with the cursor
 set nostartofline       " Keep the cursor at the same column as possible
 set display+=lastline   " When included, as much as possible of the last line in a window will be displayed
-colorscheme gruvbox
+"colorscheme gruvbox
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " search 
