@@ -22,7 +22,6 @@ Plugin 'majutsushi/tagbar'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
-"Plugin 'morhetz/gruvbox'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -39,7 +38,8 @@ set hidden              " Hide buffers when they are abandoned
 set confirm             " instead of failing a command because of unsaved changes, instead raise a
                         " dialogue asking if you wish to save changed files.
 set pastetoggle=<F2>    " <F2> toggle the paste and nopaste mode
-set path+=$PWD/**       " Set current path as vim path
+set number              " show line numbers
+set relativenumber      " Show the line number relative to the line with the cursor
 set wrap                " wrap lines
 set textwidth=0         " set textwidth length
 set scrolljump=5        " Lines to scroll when cursor leaves the screen
@@ -54,18 +54,13 @@ set wildignore=*.o,*.obj,*.out,*.bak,*.cmo,*.cmi,*.cmx,*.exe,*.py[co],*.swp,*~,.
 set wildmode=list:longest,full
 set backspace=eol,start,indent
 set whichwrap+=<,>      " Add left and right key to wrap the line when move cursor
-set lazyredraw          " redraw only when we need
 set showmode            " show the vim mode 
 set showcmd             " Show partial commands in the last line of the screen
 set ruler               " Show the line and column number of the cursor position
 set title               " show file in titlebar
-set ttyfast             " Indicates a fast terminal connection
 set laststatus=2        " Always display the status line, even if only one window is displayed 
-set number              " show line numbers
-set relativenumber      " Show the line number relative to the line with the cursor
 set nostartofline       " Keep the cursor at the same column as possible
 set display+=lastline   " When included, as much as possible of the last line in a window will be displayed
-"colorscheme gruvbox
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " search 
