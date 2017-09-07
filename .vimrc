@@ -1,8 +1,8 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " A basic vim config file with plugins
-" author: Lukun
-" email: yimng@me.com
-" version: 1.0
+" Author: Lukun
+" Email: yimng@me.com
+" Version: 1.0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible        " be iMproved, required
 filetype off            " required
@@ -22,6 +22,10 @@ Plugin 'majutsushi/tagbar'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'honza/vim-snippets'
+Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -41,7 +45,6 @@ set pastetoggle=<F2>    " <F2> toggle the paste and nopaste mode
 set number              " show line numbers
 set relativenumber      " Show the line number relative to the line with the cursor
 set wrap                " wrap lines
-set textwidth=0         " set textwidth length
 set scrolljump=5        " Lines to scroll when cursor leaves the screen
 set fileencodings+=cp936,gb18030,big5
                         " Support Chinese
@@ -54,9 +57,9 @@ set wildignore=*.o,*.obj,*.out,*.bak,*.cmo,*.cmi,*.cmx,*.exe,*.py[co],*.swp,*~,.
 set wildmode=list:longest,full
 set backspace=eol,start,indent
 set whichwrap+=<,>      " Add left and right key to wrap the line when move cursor
-set showmode            " show the vim mode 
+"set showmode            " show the vim mode 
 set showcmd             " Show partial commands in the last line of the screen
-set ruler               " Show the line and column number of the cursor position
+"set ruler               " Show the line and column number of the cursor position
 set title               " show file in titlebar
 set laststatus=2        " Always display the status line, even if only one window is displayed 
 set nostartofline       " Keep the cursor at the same column as possible
@@ -97,6 +100,7 @@ set shiftwidth=4        " number of spaces to use for each step of (auto)indent
 set softtabstop=4       " number of spaces in tab when editing
 set tabstop=4           " number of visual spaces per TAB
 set autoindent          " auto indent
+set expandtab           " expand tab to space
 set listchars+=tab:>-,trail:~,extends:>,precedes:<
                         " The visible chars to displayed when set list
 if has("autocmd")
@@ -160,3 +164,7 @@ nmap <F8> :TagbarToggle<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <F3> :NERDTreeToggle<CR>
 
+if v:version >= 700
+  au BufLeave * let b:winview = winsaveview()
+  au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
+endif
