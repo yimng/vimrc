@@ -164,7 +164,12 @@ nmap <F8> :TagbarToggle<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <F3> :NERDTreeToggle<CR>
 
+" stop scroll the window when switch buffers
 if v:version >= 700
   au BufLeave * let b:winview = winsaveview()
   au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
 endif
+
+" list the buffer and open it
+nnoremap <Leader>b :buffers<CR>:buffer<Space>
+
