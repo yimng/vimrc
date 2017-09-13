@@ -106,7 +106,7 @@ set listchars+=tab:>-,trail:~,extends:>,precedes:<
 if has("autocmd")
   autocmd FileType c,cpp,cs,diff,java,perl,php,python,sh,sql,xml,zsh          
         \ setlocal shiftwidth=4 softtabstop=4 tabstop=4 expandtab
-  autocmd FileType ocaml,css,html,javascript,vim,yaml                         
+  autocmd FileType ocaml,css,html,javascript,vim,yaml,json                         
         \ setlocal shiftwidth=2 softtabstop=2 tabstop=2 expandtab
 endif
 
