@@ -14,6 +14,7 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
+" general plugins
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'dyng/ctrlsf.vim'
@@ -26,6 +27,13 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'honza/vim-snippets'
 Plugin 'Valloric/YouCompleteMe'
+
+"javascript plugin
+Plugin 'moll/vim-node'
+Plugin 'pangloss/vim-javascript'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'mxw/vim-jsx'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -45,9 +53,9 @@ set pastetoggle=<F2>    " <F2> toggle the paste and nopaste mode
 set number              " show line numbers
 set relativenumber      " Show the line number relative to the line with the cursor
 set wrap                " wrap lines
-set scrolljump=5        " Lines to scroll when cursor leaves the screen
+"set scrolljump=5        " Lines to scroll when cursor leaves the screen
 set fileencodings+=cp936,gb18030,big5
-                        " Support Chinese
+                       " Support Chinese
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM user interface
@@ -56,14 +64,14 @@ set wildmenu            " visual autocomplete for command menu
 set wildignore=*.o,*.obj,*.out,*.bak,*.cmo,*.cmi,*.cmx,*.exe,*.py[co],*.swp,*~,.svn,.git
 set wildmode=list:longest,full
 set backspace=eol,start,indent
-set whichwrap+=<,>      " Add left and right key to wrap the line when move cursor
+"set whichwrap+=<,>      " Add left and right key to wrap the line when move cursor
 "set showmode            " show the vim mode 
-set showcmd             " Show partial commands in the last line of the screen
+"set showcmd             " Show partial commands in the last line of the screen
 "set ruler               " Show the line and column number of the cursor position
-set title               " show file in titlebar
+"set title               " show file in titlebar
 set laststatus=2        " Always display the status line, even if only one window is displayed 
-set nostartofline       " Keep the cursor at the same column as possible
-set display+=lastline   " When included, as much as possible of the last line in a window will be displayed
+"set nostartofline       " Keep the cursor at the same column as possible
+"set display+=lastline   " When included, as much as possible of the last line in a window will be displayed
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " search 
@@ -169,7 +177,3 @@ if v:version >= 700
   au BufLeave * let b:winview = winsaveview()
   au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
 endif
-
-" list the buffer and open it
-nnoremap <Leader>b :buffers<CR>:buffer<Space>
-
