@@ -58,10 +58,10 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 filetype plugin indent on   " Automatically detect file types.
 if has('syntax') && !exists('g:syntax_on')
-  syntax enable         " enable syntax processing
+  syntax enable               " enable syntax processing
 endif
 "set mouse=a                 " Automatically enable mouse usage
-set mousehide               " Hide the mouse cursor while typing
+set mousehide                 " Hide the mouse cursor while typing
 scriptencoding utf-8
 
 if has('clipboard')
@@ -80,7 +80,7 @@ if !exists('g:spf13_no_autochdir')
     " Always switch to the current file directory
 endif
 set confirm             " instead of failing a command because of unsaved changes, instead raise a
-                    " dialogue asking if you wish to save changed files.
+                        " dialogue asking if you wish to save changed files.
 "set relativenumber      " Show the line number relative to the line with the cursor
 set fileencodings+=cp936,gb18030,big5 " Support Chinese
 set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit enter')
