@@ -4,41 +4,54 @@
 " Email: yimng@me.com
 " Version: 1.0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible        " be iMproved, required
-filetype off            " required
+" Environment {
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+    " Identify platform {
+        silent function! OSX()
+            return has('macunix')
+        endfunction
+        silent function! LINUX()
+            return has('unix') && !has('macunix') && !has('win32unix')
+        endfunction
+        silent function! WINDOWS()
+            return  (has('win32') || has('win64'))
+        endfunction
+    " }
 
-" let Vundle manage Vundle, required
-" general plugins
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'dyng/ctrlsf.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'majutsushi/tagbar'
-Plugin 'vim-syntastic/syntastic'
-Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/nerdtree'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'honza/vim-snippets'
-Plugin 'Valloric/YouCompleteMe'
+    " Basics {
+        set nocompatible        " Must be first line
+        if !WINDOWS()
+            set shell=/bin/sh
+        endif
+    " }
 
-"javascript plugin
-Plugin 'moll/vim-node'
-Plugin 'pangloss/vim-javascript'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'mxw/vim-jsx'
+    " Windows Compatible {
+        " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
+        " across (heterogeneous) systems easier.
+        if WINDOWS()
+          set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+        endif
+    " }
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" Put your non-Plugin stuff after this line
+    " Arrow Key Fix {
+        " https://github.com/spf13/spf13-vim/issues/780
+        if &term[:4] == "xterm" || &term[:5] == 'screen' || &term[:3] == 'rxvt'
+            inoremap <silent> <C-[>OC <RIGHT>
+        endif
+    " }
+
+" }
+" Use before config if available {
+    if filereadable(expand("~/.vimrc.before"))
+        source ~/.vimrc.before
+    endif
+" }
+
+" Use bundles config {
+    if filereadable(expand("~/.vimrc.bundles"))
+        source ~/.vimrc.bundles
+    endif
+" }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
@@ -46,77 +59,153 @@ filetype plugin indent on    " required
 if has('syntax') && !exists('g:syntax_on')
   syntax enable         " enable syntax processing
 endif
-set hidden              " Hide buffers when they are abandoned 
+set mouse=a                 " Automatically enable mouse usage
+set mousehide               " Hide the mouse cursor while typing
+scriptencoding utf-8
+
+if has('clipboard')
+    if has('unnamedplus')  " When possible use + register for copy-paste
+        set clipboard=unnamed,unnamedplus
+    else         " On mac and Windows, use * register for copy-paste
+        set clipboard=unnamed
+    endif
+endif
 set confirm             " instead of failing a command because of unsaved changes, instead raise a
-                        " dialogue asking if you wish to save changed files.
-set pastetoggle=<F2>    " <F2> toggle the paste and nopaste mode
-set number              " show line numbers
-set relativenumber      " Show the line number relative to the line with the cursor
-set wrap                " wrap lines
-"set scrolljump=5        " Lines to scroll when cursor leaves the screen
+                    " dialogue asking if you wish to save changed files.
+"set relativenumber      " Show the line number relative to the line with the cursor
+"set wrap                " wrap lines
 set fileencodings+=cp936,gb18030,big5
-                       " Support Chinese
+                   " Support Chinese
+set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit enter')
+set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
+set virtualedit=onemore             " Allow for cursor beyond last character
+set history=1000                    " Store a ton of history (default is 20)
+"set spell                           " Spell checking on
+set hidden                          " Allow buffer switching without saving
+set iskeyword-=.                    " '.' is an end of word designator
+set iskeyword-=#                    " '#' is an end of word designator
+set iskeyword-=-                    " '-' is an end of word designator
+" http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
+" Restore cursor to file position in previous editing session
+" To disable this, add the following to your .vimrc.before.local file:
+"   let g:spf13_no_restore_cursor = 1
+if !exists('g:spf13_no_restore_cursor')
+function! ResCur()
+    if line("'\"") <= line("$")
+        silent! normal! g`"
+        return 1
+    endif
+endfunction
+
+augroup resCur
+    autocmd!
+    autocmd BufWinEnter * call ResCur()
+augroup END
+endif
+set autoread            " Set to auto read when a file is changed from the outside
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+                    " turn off search highlight by click <space>
+" stop scroll the window when switch buffers
+if v:version >= 700
+  au BufLeave * let b:winview = winsaveview()
+  au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set wildmenu            " visual autocomplete for command menu 
+set tabpagemax=15               " Only show 15 tabs
+highlight clear SignColumn      " SignColumn should match background
+highlight clear LineNr          " Current line number row will have same background color in relative mode
 set wildignore=*.o,*.obj,*.out,*.bak,*.cmo,*.cmi,*.cmx,*.exe,*.py[co],*.swp,*~,.svn,.git
-set wildmode=list:longest,full
 set backspace=eol,start,indent
-"set whichwrap+=<,>      " Add left and right key to wrap the line when move cursor
-"set showmode            " show the vim mode 
-"set showcmd             " Show partial commands in the last line of the screen
-"set ruler               " Show the line and column number of the cursor position
+set showmode            " show the vim mode 
 "set title               " show file in titlebar
-set laststatus=2        " Always display the status line, even if only one window is displayed 
 "set nostartofline       " Keep the cursor at the same column as possible
 "set display+=lastline   " When included, as much as possible of the last line in a window will be displayed
+if has('cmdline_info')
+    set ruler                   " Show the ruler
+    set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " A ruler on steroids
+    set showcmd                 " Show partial commands in status line and
+                                " Selected characters/lines in visual mode
+endif
+if has('statusline')
+    set laststatus=2        " Always display the status line, even if only one window is displayed 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" search 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set ignorecase          " ignore case in search patterns
-set smartcase           " Override the 'ignorecase' option if the search pattern contians upper case charactors
-set hlsearch            " highlight matches
-set matchpairs+=<:>     " specially for html
-set incsearch           " search as characters are enntered 
-set showmatch           " hightlight matching [{()}] 
-nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
-                        " turn off search highlight by click <space>
+    " Broken down into easily includeable segments
+    set statusline=%<%f\                     " Filename
+    set statusline+=%w%h%m%r                 " Options
+    if !exists('g:override_spf13_bundles')
+        set statusline+=%{fugitive#statusline()} " Git Hotness
+    endif
+    set statusline+=\ [%{&ff}/%Y]            " Filetype
+    set statusline+=\ [%{getcwd()}]          " Current dir
+    set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+endif
+set linespace=0                 " No extra spaces between rows
+set number                      " Line numbers on
+set showmatch                   " Show matching brackets/parenthesis
+set incsearch                   " Find as you type search
+set hlsearch                    " Highlight search terms
+set winminheight=0              " Windows can be 0 line high
+set ignorecase                  " Case insensitive search
+set smartcase                   " Case sensitive when uc present
+set wildmenu                    " Show list instead of just completing
+set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
+"set whichwrap+=<,>      " Add left and right key to wrap the line when move cursor
+set scrolljump=5                " Lines to scroll when cursor leaves screen
+set scrolloff=3                 " Minimum lines to keep above and below cursor
+set foldenable                  " Auto fold code
+set list
+set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Files and backups
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nobackup            " do not keep a backup file, use versions instead
-set autoread            " Set to auto read when a file is changed from the outside
+"set nobackup            " do not keep a backup file, use versions instead
 set nowb                " turn off writebackup
 set noswapfile          " turn off swapfile
 if has('persistent_undo')
-    let udir = '/tmp/vimundo'
-    call system('mkdir ' . udir)
-    let &undodir = udir
-    set undofile        " keep an undo file in /tmp/vimundo
+  let udir = '/tmp/vimundo'
+  call system('mkdir ' . udir)
+  let &undodir = udir
+  set undofile        " keep an undo file in /tmp/vimundo
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set smarttab            " be smart when use tabs
 set smartindent         " smart indent
-set shiftwidth=4        " number of spaces to use for each step of (auto)indent
-set softtabstop=4       " number of spaces in tab when editing
-set tabstop=4           " number of visual spaces per TAB
-set autoindent          " auto indent
-set expandtab           " expand tab to space
-set listchars+=tab:>-,trail:~,extends:>,precedes:<
-                        " The visible chars to displayed when set list
-if has("autocmd")
-  autocmd FileType c,cpp,cs,diff,java,perl,php,python,sh,sql,xml,zsh          
-        \ setlocal shiftwidth=4 softtabstop=4 tabstop=4 expandtab
-  autocmd FileType ocaml,css,html,javascript,vim,yaml,json                         
-        \ setlocal shiftwidth=2 softtabstop=2 tabstop=2 expandtab
-endif
+set nowrap                      " Do not wrap long lines
+set autoindent                  " Indent at the same level of the previous line
+set smarttab            " be smart when use tabs
+set shiftwidth=4                " Use indents of 4 spaces
+set expandtab                   " Tabs are spaces, not tabs
+set tabstop=4                   " An indentation every four columns
+set softtabstop=4               " Let backspace delete indent
+set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
+set splitright                  " Puts new vsplit windows to the right of the current
+set splitbelow                  " Puts new split windows to the bottom of the current
+set matchpairs+=<:>             " Match, to be used with %
+set pastetoggle=<F2>    " <F2> toggle the paste and nopaste mode
+autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql autocmd BufWritePre <buffer> if !exists('g:spf13_keep_trailing_whitespace') | call StripTrailingWhitespace() | endif
+"autocmd FileType go autocmd BufWritePre <buffer> Fmt
+autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
+autocmd FileType haskell,puppet,ruby,yml setlocal expandtab shiftwidth=2 softtabstop=2
+" preceding line best in a plugin but here for now.
+
+autocmd BufNewFile,BufRead *.coffee set filetype=coffee
+
+" Workaround vim-commentary for Haskell
+autocmd FileType haskell setlocal commentstring=--\ %s
+" Workaround broken colour highlighting in Haskell
+autocmd FileType haskell,rust setlocal nospell
+autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
+autocmd FileType c,cpp,cs,diff,java,perl,php,python,sh,sql,xml,zsh          
+    \ setlocal shiftwidth=4 softtabstop=4 tabstop=4 expandtab
+autocmd FileType ocaml,css,html,javascript,vim,yaml,json                         
+    \ setlocal shiftwidth=2 softtabstop=2 tabstop=2 expandtab
+autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Support OCaml with merlin
@@ -130,9 +219,9 @@ endif
 let g:ctrlp_map = '<c-p>' 
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
-    \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
-    \ }
+\ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
+\ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
+\ }
 let g:ctrlp_working_path_mode='ra'
 let g:ctrlp_match_window_bottom=1
 let g:ctrlp_match_window_reversed=0
@@ -172,8 +261,34 @@ nmap <F8> :TagbarToggle<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <F3> :NERDTreeToggle<CR>
 
-" stop scroll the window when switch buffers
-if v:version >= 700
-  au BufLeave * let b:winview = winsaveview()
-  au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
-endif
+function! StripTrailingWhitespace()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " do the business:
+    %s/\s\+$//e
+    " clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+
+" Use fork vimrc if available {
+    if filereadable(expand("~/.vimrc.fork"))
+        source ~/.vimrc.fork
+    endif
+" }
+
+" Use local vimrc if available {
+    if filereadable(expand("~/.vimrc.local"))
+        source ~/.vimrc.local
+    endif
+" }
+
+" Use local gvimrc if available and gui is running {
+    if has('gui_running')
+        if filereadable(expand("~/.gvimrc.local"))
+            source ~/.gvimrc.local
+        endif
+    endif
+" }
