@@ -56,6 +56,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+filetype plugin indent on   " Automatically detect file types.
 if has('syntax') && !exists('g:syntax_on')
   syntax enable         " enable syntax processing
 endif
@@ -70,10 +71,17 @@ if has('clipboard')
         set clipboard=unnamed
     endif
 endif
+    " Most prefer to automatically switch to the current file directory when
+    " a new buffer is opened; to prevent this behavior, add the following to
+    " your .vimrc.before.local file:
+    "   let g:spf13_no_autochdir = 1
+    if !exists('g:spf13_no_autochdir')
+        autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
+        " Always switch to the current file directory
+    endif
 set confirm             " instead of failing a command because of unsaved changes, instead raise a
                     " dialogue asking if you wish to save changed files.
 "set relativenumber      " Show the line number relative to the line with the cursor
-"set wrap                " wrap lines
 set fileencodings+=cp936,gb18030,big5
                    " Support Chinese
 set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit enter')
@@ -110,6 +118,24 @@ if v:version >= 700
   au BufLeave * let b:winview = winsaveview()
   au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
 endif
+" Setting up the directories {
+        set backup                  " Backups are nice ...
+        if has('persistent_undo')
+            set undofile                " So is persistent undo ...
+            set undolevels=1000         " Maximum number of changes that can be undone
+            set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
+        endif
+
+        " To disable views add the following to your .vimrc.before.local file:
+        "   let g:spf13_no_views = 1
+        if !exists('g:spf13_no_views')
+            " Add exclusions to mkview and loadview
+            " eg: *.*, svn-commit.tmp
+            let g:skipview_files = [
+                \ '\[example pattern\]'
+                \ ]
+        endif
+    " }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM user interface
@@ -117,8 +143,7 @@ endif
 set tabpagemax=15               " Only show 15 tabs
 highlight clear SignColumn      " SignColumn should match background
 highlight clear LineNr          " Current line number row will have same background color in relative mode
-set wildignore=*.o,*.obj,*.out,*.bak,*.cmo,*.cmi,*.cmx,*.exe,*.py[co],*.swp,*~,.svn,.git
-set backspace=eol,start,indent
+set backspace=indent,eol,start
 set showmode            " show the vim mode 
 "set title               " show file in titlebar
 "set nostartofline       " Keep the cursor at the same column as possible
@@ -151,34 +176,23 @@ set winminheight=0              " Windows can be 0 line high
 set ignorecase                  " Case insensitive search
 set smartcase                   " Case sensitive when uc present
 set wildmenu                    " Show list instead of just completing
+set wildignore=*.o,*.obj,*.out,*.bak,*.cmo,*.cmi,*.cmx,*.exe,*.py[co],*.swp,*~,.svn,.git
 set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
-"set whichwrap+=<,>      " Add left and right key to wrap the line when move cursor
+set whichwrap+=<,>      " Add left and right key to wrap the line when move cursor
 set scrolljump=5                " Lines to scroll when cursor leaves screen
 set scrolloff=3                 " Minimum lines to keep above and below cursor
 set foldenable                  " Auto fold code
 set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Files and backups
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"set nobackup            " do not keep a backup file, use versions instead
-set nowb                " turn off writebackup
-set noswapfile          " turn off swapfile
-if has('persistent_undo')
-  let udir = '/tmp/vimundo'
-  call system('mkdir ' . udir)
-  let &undodir = udir
-  set undofile        " keep an undo file in /tmp/vimundo
-endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set smartindent         " smart indent
+set smartindent         	" smart indent
 set nowrap                      " Do not wrap long lines
 set autoindent                  " Indent at the same level of the previous line
-set smarttab            " be smart when use tabs
+set smarttab            	" be smart when use tabs
 set shiftwidth=4                " Use indents of 4 spaces
 set expandtab                   " Tabs are spaces, not tabs
 set tabstop=4                   " An indentation every four columns
@@ -187,7 +201,7 @@ set nojoinspaces                " Prevents inserting two spaces after punctuatio
 set splitright                  " Puts new vsplit windows to the right of the current
 set splitbelow                  " Puts new split windows to the bottom of the current
 set matchpairs+=<:>             " Match, to be used with %
-set pastetoggle=<F2>    " <F2> toggle the paste and nopaste mode
+set pastetoggle=<F2>    	" <F2> toggle the paste and nopaste mode
 autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql autocmd BufWritePre <buffer> if !exists('g:spf13_keep_trailing_whitespace') | call StripTrailingWhitespace() | endif
 "autocmd FileType go autocmd BufWritePre <buffer> Fmt
 autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
@@ -205,7 +219,6 @@ autocmd FileType c,cpp,cs,diff,java,perl,php,python,sh,sql,xml,zsh
     \ setlocal shiftwidth=4 softtabstop=4 tabstop=4 expandtab
 autocmd FileType ocaml,css,html,javascript,vim,yaml,json                         
     \ setlocal shiftwidth=2 softtabstop=2 tabstop=2 expandtab
-autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Support OCaml with merlin
