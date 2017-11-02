@@ -7,7 +7,7 @@ app_name='lukun-vim'
 [ -z "$REPO_BRANCH" ] && REPO_BRANCH='master'
 debug_mode='0'
 fork_maintainer='0'
-[ -z "$VUNDLE_URI" ] && VUNDLE_URI="https://github.com/gmarik/vundle.git"
+[ -z "$VUNDLE_URI" ] && VUNDLE_URI="https://github.com/VundleVim/Vundle.vim.git"
 
 ############################  BASIC SETUP TOOLS
 msg() {
@@ -181,7 +181,7 @@ setup_fork_mode "$fork_maintainer" \
                 "$APP_PATH" \
                 "$HOME"
 
-sync_repo       "$HOME/.vim/bundle/vundle" \
+sync_repo       "$HOME/.vim/bundle/Vundle.vim" \
                 "$VUNDLE_URI" \
                 "master" \
                 "vundle"
