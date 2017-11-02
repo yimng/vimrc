@@ -81,7 +81,7 @@
 
 " General {
 
-    "set background=dark         " Assume a dark background
+    set background=dark         " Assume a dark background
 
     " Allow to trigger background
     function! ToggleBG()
@@ -173,7 +173,7 @@
                 \ ]
         endif
     " }
-    set confirm
+    " set confirm
     " stop scroll the window when switch buffers
     if v:version >= 700
       au BufLeave * let b:winview = winsaveview()
@@ -472,14 +472,16 @@
 " Plugins {
 
     " CtrlSf {
-        nmap     <C-F>f <Plug>CtrlSFPrompt
-        vmap     <C-F>f <Plug>CtrlSFVwordPath
-        vmap     <C-F>F <Plug>CtrlSFVwordExec
-        nmap     <C-F>n <Plug>CtrlSFCwordPath
-        nmap     <C-F>p <Plug>CtrlSFPwordPath
-        nnoremap <C-F>o :CtrlSFOpen<CR>
-        nnoremap <C-F>t :CtrlSFToggle<CR>
-        inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
+        if isdirectory(expand("~/.vim/bundle/ctrlsf.vim"))
+            nmap     <C-F>f <Plug>CtrlSFPrompt
+            vmap     <C-F>f <Plug>CtrlSFVwordPath
+            vmap     <C-F>F <Plug>CtrlSFVwordExec
+            nmap     <C-F>n <Plug>CtrlSFCwordPath
+            nmap     <C-F>p <Plug>CtrlSFPwordPath
+            nnoremap <C-F>o :CtrlSFOpen<CR>
+            nnoremap <C-F>t :CtrlSFToggle<CR>
+            inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
+        endif
     " }
 
     " GoLang {

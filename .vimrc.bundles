@@ -155,9 +155,9 @@
             " Pick one of the checksyntax, jslint, or syntastic
             Plugin 'scrooloose/syntastic'
             Plugin 'tpope/vim-fugitive'
-            Plugin 'mattn/webapi-vim'
-            Plugin 'mattn/gist-vim'
-            Plugin 'scrooloose/nerdcommenter'
+            "Plugin 'mattn/webapi-vim'
+            "Plugin 'mattn/gist-vim'
+            "Plugin 'scrooloose/nerdcommenter'
             Plugin 'tpope/vim-commentary'
             Plugin 'godlygeek/tabular'
             Plugin 'luochen1990/rainbow'
@@ -311,3 +311,7 @@
     endif
 " }
         call vundle#end()
+        filetype plugin indent on
+
+
+
