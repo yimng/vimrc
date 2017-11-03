@@ -3,10 +3,10 @@
 
 @set APP_PATH=%HOME%\.lukun-vim
 IF NOT EXIST "%APP_PATH%" (
-    call git clone -b 3.0 https://github.com/yimng/vimrc.git "%APP_PATH%"
+    call git clone -b master https://github.com/yimng/vimrc.git "%APP_PATH%"
 ) ELSE (
     @set ORIGINAL_DIR=%CD%
-    echo updating spf13-vim
+    echo updating lukun-vim
     chdir /d "%APP_PATH%"
     call git pull
     chdir /d "%ORIGINAL_DIR%"
@@ -27,9 +27,9 @@ IF NOT EXIST "%APP_PATH%\.vim\bundle" (
 )
 
 IF NOT EXIST "%HOME%/.vim/bundle/vundle" (
-    call git clone https://github.com/gmarik/vundle.git "%HOME%/.vim/bundle/vundle"
+    call git clone https://github.com/VundleVim/Vundle.vim.git "%HOME%/.vim/bundle/Vundle.vim"
 ) ELSE (
-  call cd "%HOME%/.vim/bundle/vundle"
+  call cd "%HOME%/.vim/bundle/Vundle.vim"
   call git pull
   call cd %HOME%
 )
