@@ -1,18 +1,11 @@
 " Modeline and Notes {
 " vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
 "
-"                    __ _ _____              _
-"         ___ _ __  / _/ |___ /      __   __(_)_ __ ___
-"        / __| '_ \| |_| | |_ \ _____\ \ / /| | '_ ` _ \
-"        \__ \ |_) |  _| |___) |_____|\ V / | | | | | | |
-"        |___/ .__/|_| |_|____/        \_/  |_|_| |_| |_|
-"            |_|
 "
-"   This is the personal .vimrc file of Steve Francia.
+"   This is the personal .vimrc file of Lukun. It is mostly
+"   base on: https://github.com/spf13/spf13-vim/blob/3.0/.vimrc
 "   While much of it is beneficial for general use, I would
 "   recommend picking out the parts you want and understand.
-"
-"   You can find me at http://spf13.com
 "
 "   Copyright 2014 Steve Francia
 "
@@ -128,6 +121,7 @@
     set history=1000                    " Store a ton of history (default is 20)
     "set spell                           " Spell checking on
     set hidden                          " Allow buffer switching without saving
+    set visualbell                      " Use a visual bell instead of beeping.
     set iskeyword-=.                    " '.' is an end of word designator
     set iskeyword-=#                    " '#' is an end of word designator
     set iskeyword-=-                    " '-' is an end of word designator
