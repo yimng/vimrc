@@ -121,7 +121,7 @@
     set history=1000                    " Store a ton of history (default is 20)
     "set spell                           " Spell checking on
     set hidden                          " Allow buffer switching without saving
-    set visualbell                      " Use a visual bell instead of beeping.
+    "set visualbell                      " Use a visual bell instead of beeping.
     set iskeyword-=.                    " '.' is an end of word designator
     set iskeyword-=#                    " '#' is an end of word designator
     set iskeyword-=-                    " '-' is an end of word designator
