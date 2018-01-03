@@ -186,7 +186,7 @@
 
     " PHP {
         if count(g:yimng_bundle_groups, 'php')
-            Plugin 'yimng/PIV'
+            Plugin 'spf13/PIV'
             Plugin 'arnaud-lb/vim-php-namespace'
             Plugin 'beyondwords/vim-twig'
         endif
