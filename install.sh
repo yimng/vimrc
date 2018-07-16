@@ -181,12 +181,12 @@ setup_fork_mode "$fork_maintainer" \
                 "$APP_PATH" \
                 "$HOME"
 
-sync_repo       "$HOME/.vim/bundle/Vundle.vim" \
+#sync_repo       "$HOME/.vim/bundle/Vundle.vim" \
                 "$VUNDLE_URI" \
                 "master" \
                 "vundle"
 
-setup_vundle    "$APP_PATH/.vimrc.bundles.default"
+#setup_vundle    "$APP_PATH/.vimrc.bundles.default"
 
 msg             "\nThanks for installing $app_name."
 msg             "© `date +%Y` "
