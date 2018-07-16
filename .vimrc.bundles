@@ -165,8 +165,8 @@
             Plug 'garbas/vim-snipmate'
             Plug 'honza/vim-snippets'
             " Source support_function.vim to support vim-snippets.
-            if filereadable(expand("~/.vim/bundle/vim-snippets/snippets/support_functions.vim"))
-                source ~/.vim/bundle/vim-snippets/snippets/support_functions.vim
+            if filereadable(expand("~/.vim/plugged/vim-snippets/snippets/support_functions.vim"))
+                source ~/.vim/plugged/vim-snippets/snippets/support_functions.vim
             endif
         elseif count(g:yimng_bundle_groups, 'youcompleteme')
             Plug 'Valloric/YouCompleteMe'
@@ -198,8 +198,8 @@
             " Pick either python-mode or pyflakes & pydoc
             Plug 'klen/python-mode'
             Plug 'yssource/python.vim'
-            Plug 'python_match.vim'
-            Plug 'pythoncomplete'
+            "Plug 'python_match.vim'
+            "Plug 'pythoncomplete'
         endif
     " }
 
