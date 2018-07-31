@@ -114,14 +114,14 @@
         " Always switch to the current file directory
     endif
 
-    set autowrite                       " Automatically write a file when leaving a modified buffer
+    "set autowrite                       " Automatically write a file when leaving a modified buffer
     set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit enter')
     set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
     set virtualedit=onemore             " Allow for cursor beyond last character
     set history=1000                    " Store a ton of history (default is 20)
-    set nospell                         " Spell checking on
+    "set spell                         " Spell checking on
     set hidden                          " Allow buffer switching without saving
-    set visualbell                      " Use a visual bell instead of beeping.
+    "set visualbell                      " Use a visual bell instead of beeping.
     set iskeyword-=.                    " '.' is an end of word designator
     set iskeyword-=#                    " '#' is an end of word designator
     set iskeyword-=-                    " '-' is an end of word designator
@@ -208,9 +208,9 @@
         " Broken down into easily includeable segments
         set statusline=%<%f\                     " Filename
         set statusline+=%w%h%m%r                 " Options
-        "if !exists('g:override_yimng_bundles')
-        "    set statusline+=%{fugitive#statusline()} " Git Hotness
-        "endif
+        if !exists('g:override_yimng_bundles')
+            set statusline+=%{fugitive#statusline()} " Git Hotness
+        endif
         set statusline+=\ [%{&ff}/%Y]            " Filetype
         set statusline+=\ [%{getcwd()}]          " Current dir
         set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
