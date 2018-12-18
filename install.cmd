@@ -22,16 +22,3 @@ call mklink "%HOME%\.vimrc.before" "%APP_PATH%\.vimrc.before"
 call mklink "%HOME%\.vimrc.before.fork" "%APP_PATH%\.vimrc.before.fork"
 call mklink /J "%HOME%\.vim" "%APP_PATH%\.vim"
 
-IF NOT EXIST "%APP_PATH%\.vim\bundle" (
-    call mkdir "%APP_PATH%\.vim\bundle"
-)
-
-IF NOT EXIST "%HOME%/.vim/bundle/vundle" (
-    call git clone https://github.com/VundleVim/Vundle.vim.git "%HOME%/.vim/bundle/Vundle.vim"
-) ELSE (
-  call cd "%HOME%/.vim/bundle/Vundle.vim"
-  call git pull
-  call cd %HOME%
-)
-
-call vim -u "%APP_PATH%/.vimrc.bundles" +BundleInstall! +BundleClean +qall
