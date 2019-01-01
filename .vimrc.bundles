@@ -43,27 +43,9 @@
         endif
     " }
 
-    " Setup Bundle Support {
-        if empty(glob('~/.vim/autoload/plug.vim'))
-              silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-                  \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-                autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-        endif
-        call plug#begin('~/.vim/plugged')
-    " }
-
-    " Add an UnBundle command {
-    "function! UnBundle(arg, ...)
-    "  let bundle = vundle#config#init_bundle(a:arg, a:000)
-    "  call filter(g:vundle#bundles, 'v:val["name_spec"] != "' . a:arg . '"')
-    "endfunction
-
-    "com! -nargs=+         UnBundle
-    "\ call UnBundle(<args>)
-    " }
-
 " }
 
+      call plug#begin('~/.vim/plugged')
 " Bundles {
 
     " Deps {
@@ -84,7 +66,7 @@
     " list only the plugin groups you will use
     if !exists('g:yimng_bundle_groups')
         "let g:yimng_bundle_groups=['general', 'writing', 'neocomplete', 'programming', 'php', 'ruby', 'python', 'javascript', 'html', 'misc',]
-        let g:yimng_bundle_groups=['general','programming','python','javascript','html']
+        let g:yimng_bundle_groups=['general','neocomplete','programming','python','javascript','html']
     endif
 
     " To override all the included bundles, add the following to your

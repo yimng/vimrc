@@ -2,12 +2,13 @@
 
 ############################  SETUP PARAMETERS
 app_name='lukun-vim'
+debug_mode='0'
+fork_maintainer='0'
 [ -z "$APP_PATH" ] && APP_PATH="$HOME/.lukun-vim"
 [ -z "$REPO_URI" ] && REPO_URI='https://github.com/yimng/vimrc.git'
 [ -z "$REPO_BRANCH" ] && REPO_BRANCH='master'
-debug_mode='0'
-fork_maintainer='0'
-[ -z "$VUNDLE_URI" ] && VUNDLE_URI="https://github.com/VundleVim/Vundle.vim.git"
+[ -z "$PLUG_URI" ] && PLUG_URI="https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+
 
 ############################  BASIC SETUP TOOLS
 msg() {
@@ -143,20 +144,22 @@ setup_fork_mode() {
     fi
 }
 
-setup_vundle() {
+setup_plug() {
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs $PLUG_URI
+}
+
+install_plugins() {
     local system_shell="$SHELL"
     export SHELL='/bin/sh'
 
     vim \
         -u "$1" \
         "+set nomore" \
-        "+BundleInstall!" \
-        "+BundleClean" \
-        "+qall"
+        "+PlugInstall"
 
     export SHELL="$system_shell"
 
-    success "Now updating/installing plugins using Vundle"
+    success "Now updating/installing plugins using vim-plug"
     debug
 }
 
@@ -164,6 +167,7 @@ setup_vundle() {
 variable_set "$HOME"
 program_must_exist "vim"
 program_must_exist "git"
+program_must_exist "curl"
 
 do_backup       "$HOME/.vim" \
                 "$HOME/.vimrc" \
@@ -180,6 +184,10 @@ create_symlinks "$APP_PATH" \
 setup_fork_mode "$fork_maintainer" \
                 "$APP_PATH" \
                 "$HOME"
+
+setup_plug
+
+install_plugins "$APP_PATH/.vimrc.bundles.default"
 
 msg             "\nThanks for installing $app_name."
 msg             "© `date +%Y` "
