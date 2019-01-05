@@ -128,6 +128,12 @@
     " General Programming {
         if count(g:yimng_bundle_groups, 'programming')
             " Pick one of the checksyntax, jslint, or syntastic
+            " syntastic
+            if v:version < 800
+                Plug 'scrooloose/syntastic'
+            else
+                Plug 'w0rp/ale'
+            endif
             Plug 'scrooloose/syntastic'
             Plug 'tpope/vim-fugitive'
             Plug 'mattn/webapi-vim'
@@ -182,46 +188,50 @@
             Plug 'yssource/python.vim'
             Plug 'vim-scripts/python_match.vim'
             Plug 'vim-scripts/pythoncomplete'
-        endif
-    " }
+            Plug 'hdima/python-syntax'
+            Plug 'hynek/vim-python-pep8-indent'
+            Plug 'Glench/Vim-Jinja2-Syntax'
+            "Plug 'davidhalter/jedi-vim'
+          endif
+      " }
 
-    " Javascript {
-        if count(g:yimng_bundle_groups, 'javascript')
-            Plug 'elzr/vim-json'
-            Plug 'groenewege/vim-less'
-            Plug 'pangloss/vim-javascript'
-            Plug 'briancollins/vim-jst'
-            Plug 'kchmck/vim-coffee-script'
-        endif
-    " }
+      " Javascript {
+          if count(g:yimng_bundle_groups, 'javascript')
+              Plug 'elzr/vim-json'
+              Plug 'groenewege/vim-less'
+              Plug 'pangloss/vim-javascript'
+              Plug 'briancollins/vim-jst'
+              Plug 'kchmck/vim-coffee-script'
+          endif
+      " }
 
-    " Scala {
-        if count(g:yimng_bundle_groups, 'scala')
-            Plug 'derekwyatt/vim-scala'
-            Plug 'derekwyatt/vim-sbt'
-            Plug 'xptemplate'
-        endif
-    " }
+      " Scala {
+          if count(g:yimng_bundle_groups, 'scala')
+              Plug 'derekwyatt/vim-scala'
+              Plug 'derekwyatt/vim-sbt'
+              Plug 'xptemplate'
+          endif
+      " }
 
-    " Haskell {
-        if count(g:yimng_bundle_groups, 'haskell')
-            Plug 'travitch/hasksyn'
-            Plug 'dag/vim2hs'
-            Plug 'Twinside/vim-haskellConceal'
-            Plug 'Twinside/vim-haskellFold'
-            Plug 'lukerandall/haskellmode-vim'
-            Plug 'eagletmt/neco-ghc'
-            Plug 'eagletmt/ghcmod-vim'
-            Plug 'Shougo/vimproc.vim'
-            Plug 'adinapoli/cumino'
-            Plug 'bitc/vim-hdevtools'
-        endif
-    " }
+      " Haskell {
+          if count(g:yimng_bundle_groups, 'haskell')
+              Plug 'travitch/hasksyn'
+              Plug 'dag/vim2hs'
+              Plug 'Twinside/vim-haskellConceal'
+              Plug 'Twinside/vim-haskellFold'
+              Plug 'lukerandall/haskellmode-vim'
+              Plug 'eagletmt/neco-ghc'
+              Plug 'eagletmt/ghcmod-vim'
+              Plug 'Shougo/vimproc.vim'
+              Plug 'adinapoli/cumino'
+              Plug 'bitc/vim-hdevtools'
+          endif
+      " }
 
-    " HTML {
-        if count(g:yimng_bundle_groups, 'html')
-            "Plug 'amirh/HTML-AutoCloseTag'
-            Plug 'hail2u/vim-css3-syntax'
+      " HTML {
+          if count(g:yimng_bundle_groups, 'html')
+              "Plug 'amirh/HTML-AutoCloseTag'
+              Plug 'hail2u/vim-css3-syntax'
             Plug 'gorodinskiy/vim-coloresque'
             Plug 'tpope/vim-haml'
             Plug 'mattn/emmet-vim'
