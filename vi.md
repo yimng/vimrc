@@ -2,14 +2,17 @@ vi 的操作和配置
 ==============
 基本操作
 -----
-:sh         开始一个shell命令行，ctr-D 回到vi
+```sh
+$sh         开始一个shell命令行，ctr-D 回到vi
 ctrl+z & fg 在vi中，可以ctr-z suspend vi进入命令行，然后fg回到vi
-:verbose set option?  查看这个option是什么值，在那个配置文件里设置的
-:script     查看vim加载的配置脚本
-vim -u      加载vim配置文件，比如vim -u ~/.vimrc
-vim -u NONE 什么都不加载
+$verbose set option?  查看这个option是什么值，在那个配置文件里设置的
+$script     查看vim加载的配置脚本
+$vim -u      加载vim配置文件，比如vim -u ~/.vimrc
+$vim -u NONE 什么都不加载
+```
 移动光标
 -------
+```sh
 z <enter>   把当前行移到屏幕的开始(zt)
 z.          把当前行移动屏幕的中间(zz)
 z-          把当前行移动到屏幕的底部(zb)
@@ -41,15 +44,20 @@ K           看光标所指的标识符的 man文件
 $           到本行行尾
 g_          到本行最后一个不是blank字符的位置
 %           匹配括号移动，包括 (, {, [. （需要把光标先移到括号上）
+```
 文本搜索
 -------
+```sh
 f(F)x       在光标所在行进行查找, 查找光标右(左)方第一个x字符.
 t(T)x
 \c          不区分大小写
 q:          搜索历史命令记录
 q/          搜索历史搜索记录
+```
+
 编辑文本
 -------
+```
 $           代表文件的最后一行
 %           代表文件里的所有行
 :.,$d       从当前行删除到文件结尾
@@ -89,8 +97,11 @@ ctrl+P
 Ctrl+A / Ctrl+X 
             increments/decrements a number.
 !)tr '[:lower:]' '[:upper:]' 把下面一段从小写变成大写
+```
+
 文件编辑
 -------
+```sh
 vi +n file  在第n行打开文件file
 vi +/pattern file 在第一次匹配的地方打开file
 vi -R file  以只读的方式打开file（相当于view file?)
@@ -114,8 +125,11 @@ vi file1 file2 ...编辑文件1 2 。。。
 ctrl+^      在current和alternate之间切换
 :e file     编辑文件file
 :w %.new    把当前文件重命名为filename.new
+```
+
 粘贴板和标记
 -----------
+```sh
 :reg        查看粘贴
 vi 默认用1-9到命名九个粘贴板
 "2p         把粘贴板 2 里的内容粘贴出来
@@ -126,8 +140,10 @@ mx          用x来标记当前光标的位置，x可以为任何字母
 mX          用X来标记一个文件，X为任何大字字母，这个标记可以用文件间跳转
 'x          返回标记所在的行
 `x          光标返回标记
+```
 模式切换
 -------
+```sh
 v           进入visual模式
 ctrl+v      区块选取
 < >         在visual模式下左右缩进选中的文本
@@ -170,9 +186,11 @@ a]          a bracketed block
 i]          inner bracketed block
 a}          a brace block
 i}          inner brace block
+```
 
 多窗口
 -----
+```sh
 vim -o file1 file2 打开multiwindow
 :sp[lit]    分隔两个水平窗口
 :vs[plit]   分隔出两个垂直窗口
@@ -197,8 +215,12 @@ Ctrl+w L    向右移动当前窗口
 Ctrl+w +    增加窗口高度
 Ctrl+w -    减小窗口高度
 Ctrl+w =    统一窗口高度
+```
+
 代码折叠
 -------
+```sh
 za          打开或者关闭折叠
 zM          折叠所有
 zR          打开所有折叠
+```
