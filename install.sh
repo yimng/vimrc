@@ -155,7 +155,9 @@ install_plugins() {
     vim \
         -u "$1" \
         "+set nomore" \
-        "+PlugInstall"
+        "+PlugInstall!" \
+        "+PlugClean!" \
+        "+qall"
 
     export SHELL="$system_shell"
 
