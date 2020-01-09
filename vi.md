@@ -3,10 +3,10 @@ vi 的操作和配置
 基本操作
 -----
 ```sh
-$sh         开始一个shell命令行，ctr-D 回到vi
+:sh         开始一个shell命令行，ctr-D 回到vi
 ctrl+z & fg 在vi中，可以ctr-z suspend vi进入命令行，然后fg回到vi
-$verbose set option?  查看这个option是什么值，在那个配置文件里设置的
-$script     查看vim加载的配置脚本
+:verbose set option?  查看这个option是什么值，在那个配置文件里设置的
+:script     查看vim加载的配置脚本
 $vim -u      加载vim配置文件，比如vim -u ~/.vimrc
 $vim -u NONE 什么都不加载
 K           看光标所指的标识符的 man文件
