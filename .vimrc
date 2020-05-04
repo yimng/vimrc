@@ -231,7 +231,7 @@
     set scrolljump=5                " Lines to scroll when cursor leaves screen
     set scrolloff=3                 " Minimum lines to keep above and below cursor
     set foldenable                  " Auto fold code
-    set list
+    "set list
     set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
     set fileencodings+=cp936,gb18030,big5
                                     " Support Chinese
