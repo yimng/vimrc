@@ -93,7 +93,7 @@
     " endif
     filetype plugin indent on   " Automatically detect file types.
     syntax on                   " Syntax highlighting
-    "set mouse=a                 " Automatically enable mouse usage
+    set mouse=a                 " Automatically enable mouse usage
     set mousehide               " Hide the mouse cursor while typing
     scriptencoding utf-8
 
@@ -193,7 +193,7 @@
 
     highlight clear SignColumn      " SignColumn should match background
     highlight clear LineNr          " Current line number row will have same background color in relative mode
-    highlight clear CursorLineNr    " Remove highlight color from current line number
+    "highlight clear CursorLineNr    " Remove highlight color from current line number
 
     if has('cmdline_info')
         set ruler                   " Show the ruler
@@ -227,7 +227,7 @@
     set smartcase                   " Case sensitive when uc present
     set wildmenu                    " Show list instead of just completing
     set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
-    "set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
+    set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
     set scrolljump=5                " Lines to scroll when cursor leaves screen
     set scrolloff=3                 " Minimum lines to keep above and below cursor
     set foldenable                  " Auto fold code
@@ -248,7 +248,7 @@
     set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
     set splitright                  " Puts new vsplit windows to the right of the current
     set splitbelow                  " Puts new split windows to the bottom of the current
-    set matchpairs+=<:>             " Match, to be used with %
+    "set matchpairs+=<:>             " Match, to be used with %
     set pastetoggle=<F2>            " pastetoggle (sane indentation on pastes)
     set smarttab
     set smartindent
