@@ -17,3 +17,4 @@ PluginClean      - confirms removal of unused plugins; append `!` to auto-approv
 ```
 >There is just one rule you must follow when crafting your own .vimrc.
 >Don't put any lines in your vimrc that you don't understand.
+> hahahaha
